@@ -11,6 +11,11 @@ This repository will contain every custom maps or map contents made by XorHub or
 - teeworlds
  - maps (map files)
  - mapresses (non-default map graphics)
+ - servers\_configuration\_files mapresses (configuration files)
+
+- warsow
+ - maps (map files)
+ - servers\_configuration\_files mapresses (configuration files)
 
 # License
 
