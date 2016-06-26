@@ -1,8 +1,9 @@
-# XorHub map contents repository
+# XorHub servers contents repository
 
-This repository will contain every custom maps or map contents made by XorHub organization
+This repository contains some modified files from Xohub's servers.
+It actually contains maps contents and server configuration files
 
-# The repository
+## The repository
 
 - minetest
  - maps
@@ -17,6 +18,6 @@ This repository will contain every custom maps or map contents made by XorHub or
  - maps (map files)
  - servers\_configuration\_files mapresses (configuration files)
 
-# License
+## License
 
 All contents here are under the CC-BY-SA 4.0 license.
