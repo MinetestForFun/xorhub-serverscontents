@@ -10,4 +10,4 @@ Maps finishing with :
 # Maps and mapresses
 
 Custom maps are using default mapresses integrated to teeworlds default client, and are stored in "maps" folder.
-Custom mapresses made by the team XorHub will be stored in "mapresses" folder.
+If some maps are using custom mapresses, the mapresses will be stored in the "mapresses" folder of the directory.

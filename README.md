@@ -10,9 +10,11 @@ It actually contains maps contents and server configuration files
  - schematics (world edit schematics)
 
 - teeworlds
- - maps (map files)
- - mapresses (non-default map graphics)
- - servers\_configuration\_files mapresses (configuration files)
+ - server
+  - `serverconfig.cfg`
+  - data
+   - maps (custom maps)
+   - mapresses (custom mapresses)
 
 - warsow
  - maps (map files)
