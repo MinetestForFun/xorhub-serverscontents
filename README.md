@@ -12,7 +12,7 @@ It actually contains crontabs, scripts, server configuration files and maps cont
   - var/www/mtsatellite* (configuration files for the realtime web worldmap)
   - crontab.txt
  
-- SRV FPS
+- SRV-FPS
   - scripts
   - teeworlds
     - maps (custom maps)
