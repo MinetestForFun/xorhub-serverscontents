@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 # passer sur branche master ou stable github
 cd /home/quentinbd/mff-hg/
 
@@ -31,7 +33,7 @@ rm -v /home/quentinbd/stable-0.4
 cd /home/quentinbd/mff-hg/
 # build SQLITE3
 cmake . -DBUILD_CLIENT=0 -DBUILD_SERVER=1 -DRUN_IN_PLACE=1 -DENABLE_GETTEXT=1 -DENABLE_FREETYPE=1 -DENABLE_LUAJIT=1 -DCMAKE_INSTALL_PREFIX:PATH=/usr
-make -j$(grep -c processor /proc/cpuinfo)
+make -j'$(grep -c processor /proc/cpuinfo)'
 
 # Ajout des fichiers critiques au nouveau dossier minetest
 cp -Rv /home/quentinbd/scripts/upgrade-mff-hg/olds/minetestforfun_game/ /home/quentinbd/mff-hg/games/
