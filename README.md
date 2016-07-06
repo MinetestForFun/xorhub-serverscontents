@@ -16,7 +16,7 @@ It actually contains crontabs, scripts, server configuration files and maps cont
   - scripts
   - teeworlds
     - maps (custom maps)
-	- server configuration file
+    - server configuration file
   - warsow
     - server configuration file
   - crontab.txt
