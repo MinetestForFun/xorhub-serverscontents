@@ -1,24 +1,26 @@
 # XorHub servers contents repository
 
 This repository contains some modified files from Xohub's servers.
-It actually contains maps contents and server configuration files
+It actually contains crontabs, scripts, server configuration files and maps contents
 
 ## The repository
 
-- minetest
- - maps
- - schematics (world edit schematics)
 
-- teeworlds
- - server
-  - `serverconfig.cfg`
-  - data
-   - maps (custom maps)
-   - mapresses (custom mapresses)
-
-- warsow
- - maps (map files)
- - servers\_configuration\_files mapresses (configuration files)
+- SRV-MINETEST
+  - minetest
+    - servers schematics (world edit schematics)
+  - var/www/mtsatellite* (configuration files for the realtime web worldmap)
+  - crontab.txt
+ 
+- SRV FPS
+  - scripts
+  - teeworlds
+    - maps (custom maps)
+	- server configuration file
+  - warsow
+    - server configuration file
+  - crontab.txt
+ 
 
 ## License
 
