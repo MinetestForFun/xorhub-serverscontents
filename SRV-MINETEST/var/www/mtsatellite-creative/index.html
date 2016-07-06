@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MinetestForFun Creative World</title>
+<meta charset="utf-8" />
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/Leaflet.Coordinates-0.1.4.css" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="css/leaflet.awesome-markers.css" />
+    <style type="text/css">
+        body {
+            height: 100%;
+        }
+
+        #map {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111111;
+        }
+
+        .leaflet-container {
+            cursor: crosshair;
+        }
+
+        .leaflet-control-coordinates,
+        .leaflet-control-layers {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            background-color:rgba(255,255,255,.85);
+        }
+        .awesome-marker i {
+            font-size: 18px;
+            margin-left: -1px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="js/leaflet.js"></script>
+    <script src="js/Leaflet.Coordinates-0.1.4.min.js"></script>
+    <script src="js/easy-button.js"></script>
+    <script src="js/auto-update.js"></script>
+    <script type="text/javascript" src="js/leaflet-hash.js"></script>
+    <script type="text/javascript" src="js/leaflet.ajax.js"></script>
+    <script type="text/javascript" src="js/leaflet.awesome-markers.js"></script>
+    <script>
+
+var useWebsocket = true; // Set to true if you want websocket support
+
+L.Projection.NoWrap = {
+    project: function (latlng) {
+        return new L.Point(latlng.lat, latlng.lng);
+    },
+
+    unproject: function (point, unbounded) {
+        return new L.LatLng(point.x, point.y, true);
+    }
+};
+
+L.CRS.Direct = L.Util.extend({}, L.CRS, {
+    code: 'Direct',
+    projection: L.Projection.NoWrap,
+    transformation: new L.Transformation(1.0/65536, 30928.0/65536, -1.0/65536, 34608.0/65536)
+});
+
+var world = new L.tileLayer('map/{z}/{x}/{y}.png', {
+    minZoom: 0,
+    maxZoom: 16,
+    attribution: 'MinetestForFun Creative World',
+    continuousWorld: false,
+    noWrap: true,
+    tms: true,
+    unloadInvisibleTiles: true
+});
+
+var players = L.geoJson.ajax('/players', {
+    pointToLayer: function(feature, latlng) {
+        return L.marker(latlng, {
+            icon: L.AwesomeMarkers.icon({
+                icon: 'male',
+                iconColor: 'black',
+                prefix: 'fa',
+                markerColor: 'green'
+            }),
+            title: feature.properties.name
+        })
+    }
+});
+
+//
+// Spawn of CREATIVE server (Point Of Interrest)
+//
+var spawn = L.marker([-712, -698],{
+icon: L.AwesomeMarkers.icon({
+icon: 'crosshairs', //Also great => linux sun-o
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'red'
+}),
+}).bindPopup("Spawn Castle")
+
+//
+// Maisons des joueurs (Point Of Interrest)
+//
+var eros_castle = L.marker([-745, -707],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("EROS Castle (by Centarus & Aggomar)")
+
+var montgolfiere = L.marker([-803, -948],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Montgolfière (by Cyberpangolin)")
+
+var izaczips_palace = L.marker([-977, -641],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("iZacZips Palace (by iZacZips)")
+
+var group_poi = L.layerGroup([spawn, eros_castle, montgolfiere, izaczips_palace]);
+
+//menu en haut à droite
+var rasterMaps = {
+    "MinetestForFun Creative World": world,
+};
+
+var latest = world
+
+var overlayMaps = {
+	'Players' : players,
+    "Points Of Interrest" : group_poi,
+	//"Warp Crystals" : group_warp,
+	};
+
+var map = L.map('map', {
+    center: [0,0],
+    zoom: 3,
+    layers: [latest, players],
+// pour en cocher d'autres -> layers: [latest, players,group_warp,group_poi],
+    worldCopyJump: false,
+    crs: L.CRS.Direct});
+
+L.control.coordinates({
+    position:"topright", //optional default "bootomright"
+    decimals:0, //optional default 4
+    decimalSeperator:".", //optional default "."
+    labelTemplateLat:"X: {y}", //optional default "Lat: {y}"
+    labelTemplateLng:"Y: {x}", //optional default "Lng: {x}"
+    enableUserInput:false, //optional default true
+    useDMS:false, //optional default false
+    useLatLngOrder: true //ordering of labels, default false-> lng-lat
+}).addTo(map);
+
+var manualUpdateControl;
+if (useWebsocket && 'WebSocket' in window) {
+    L.autoUpdate('autoUpdate', function(pressed) {
+        var styleDec = manualUpdateControl.getContainer().style;
+        styleDec.visibility = pressed ? 'hidden' : 'visible';
+    },
+    players);
+}
+var layersControl = new L.Control.Layers(rasterMaps, overlayMaps, {collapsed: false});
+map.addControl(layersControl);
+
+manualUpdateControl = L.easyButton('fa-refresh',
+    function (){
+        var tiles = document.getElementsByTagName("img");
+        for (var i = 0; i < tiles.length; i++) {
+            var img = tiles[i];
+            var cl = img.getAttribute("class");
+            if (cl.indexOf("leaflet-tile-loaded") >= 0) {
+                var src = img.src;
+                var idx = src.lastIndexOf("#");
+                if (idx >= 0) {
+                    src = src.substring(0, idx);
+                }
+                img.src = src + "#" + Math.random();
+            }
+        }
+        //map._resetView(map.getCenter(), map.getZoom(), false);
+        players.refresh("/players");
+    },
+    'Update view'
+);
+    var hash = new L.Hash(map)
+    </script>
+</body>
+</html>

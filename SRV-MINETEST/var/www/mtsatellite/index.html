@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MinetestForFun Classic World</title>
+<meta charset="utf-8" />
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/Leaflet.Coordinates-0.1.4.css" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="css/leaflet.awesome-markers.css" />
+    <style type="text/css">
+        body {
+            height: 100%;
+        }
+
+        #map {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111111;
+        }
+
+        .leaflet-container {
+            cursor: crosshair;
+        }
+
+        .leaflet-control-coordinates,
+        .leaflet-control-layers {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            background-color:rgba(255,255,255,.85);
+        }
+        .awesome-marker i {
+            font-size: 18px;
+            margin-left: -1px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="js/leaflet.js"></script>
+    <script src="js/Leaflet.Coordinates-0.1.4.min.js"></script>
+    <script src="js/easy-button.js"></script>
+    <script src="js/auto-update.js"></script>
+    <script type="text/javascript" src="js/leaflet-hash.js"></script>
+    <script type="text/javascript" src="js/leaflet.ajax.js"></script>
+    <script type="text/javascript" src="js/leaflet.awesome-markers.js"></script>
+    <script>
+
+var useWebsocket = true; // Set to true if you want websocket support
+
+L.Projection.NoWrap = {
+    project: function (latlng) {
+        return new L.Point(latlng.lat, latlng.lng);
+    },
+
+    unproject: function (point, unbounded) {
+        return new L.LatLng(point.x, point.y, true);
+    }
+};
+
+L.CRS.Direct = L.Util.extend({}, L.CRS, {
+    code: 'Direct',
+    projection: L.Projection.NoWrap,
+    transformation: new L.Transformation(1.0/65536, 30928.0/65536, -1.0/65536, 34608.0/65536)
+});
+
+var world = new L.tileLayer('map/{z}/{x}/{y}.png', {
+    minZoom: 0,
+    maxZoom: 16,
+    attribution: 'MinetestForFun Classic World',
+    continuousWorld: false,
+    noWrap: true,
+    tms: true,
+    unloadInvisibleTiles: true
+});
+
+var players = L.geoJson.ajax('/players', {
+    pointToLayer: function(feature, latlng) {
+        return L.marker(latlng, {
+            icon: L.AwesomeMarkers.icon({
+                icon: 'male',
+                iconColor: 'black',
+                prefix: 'fa',
+                markerColor: 'green'
+            }),
+            title: feature.properties.name
+        })
+    }
+});
+
+//
+// Spawn (Point Of Interrest)
+//
+var spawn_tower = L.marker([28, -1],{
+icon: L.AwesomeMarkers.icon({
+icon: 'crosshairs', //Also great => linux sun-o
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'red'
+}),
+}).bindPopup('Spawn Tower')
+
+//
+// Bâtiments de Classes (Point Of Interrest)
+//
+// Bâtiments de Classe Hunter
+var hunter_class_building = L.marker([-122, 90],{
+icon: L.AwesomeMarkers.icon({
+icon: 'chevron-up', //glyphicons-chevron-up
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'blue'
+}),
+}).bindPopup('Hunter Class Building')
+
+// Bâtiments de Classe Warrior
+var warrior_class_building = L.marker([275, 3],{
+icon: L.AwesomeMarkers.icon({
+icon: 'chevron-up', //glyphicons-chevron-up
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'blue'
+}),
+}).bindPopup("Warrior Class Building")
+
+//
+// Bâtiments Spéciaux (Point Of Interrest)
+//
+// Spawn Shop
+var shop_spawn = L.marker([-7, 80],{
+icon: L.AwesomeMarkers.icon({
+icon: 'shopping-cart', //cadis
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Shop")
+
+//
+// Maisons des joueurs (Point Of Interrest)
+//
+var b91b_island = L.marker([1067, -956],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("b91b's Island")
+
+var furiousfish_island = L.marker([1003, -2],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("furiousfish's Island")
+
+var palige_castle = L.marker([84, 3],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Palige's Castle")
+
+var cyberpangolin_roman_villa = L.marker([46, -86],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Cyberpangolin's Roman Villa")
+
+var obani_house = L.marker([-588, 95],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Obani's House")
+
+var jabali_house = L.marker([-35, -384],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("jabali's House")
+
+var farfadet46_house = L.marker([-108, 169],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("farfadet46's House")
+
+var crabman_house = L.marker([95, 139],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Crabman's House")
+
+var japp_house = L.marker([-20737, -19950],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("JAPP's House")
+
+var ataron_island = L.marker([-730, 1910],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Ataron's Island")
+
+var jg_island = L.marker([-1440, 45],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Jg's Island")
+
+var gael_de_sailly_house = L.marker([504.5, -954.5],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Gael-de-Sailly's House")
+
+var gravgun_house = L.marker([-684.5, 171.5],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("gravgun's House")
+
+var le_docteur_house = L.marker([3831, 3490],{
+icon: L.AwesomeMarkers.icon({
+icon: 'home',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Le_Docteur's House")
+
+
+var group_poi = L.layerGroup([spawn_tower, hunter_class_building, warrior_class_building, shop_spawn, b91b_island, furiousfish_island, palige_castle, cyberpangolin_roman_villa, obani_house,
+				jabali_house, farfadet46_house, crabman_house, japp_house, ataron_island, jg_island, gael_de_sailly_house, gravgun_house, le_docteur_house]);
+
+// Teleporter/Warp Crystal
+var warp_nw = L.marker([-19659, 25138],{
+icon: L.AwesomeMarkers.icon({
+icon: 'tag',    //circle-down
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'purple'
+}),
+}).bindPopup('North-West Warp Crystal')
+
+var warp_ne = L.marker([24671, 25533],{
+icon: L.AwesomeMarkers.icon({
+icon: 'tag',    //circle-down
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'purple'
+}),
+}).bindPopup('North-East Warp Crystal')
+
+var warp_se = L.marker([25153, -20151],{
+icon: L.AwesomeMarkers.icon({
+icon: 'tag',    //circle-down
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'purple'
+}),
+}).bindPopup('South-West Warp Crystal')
+
+var warp_sw = L.marker([-19962, -19922],{
+icon: L.AwesomeMarkers.icon({
+icon: 'tag',    //circle-down
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'purple'
+}),
+}).bindPopup('South-East Warp Crystal')
+
+var group_warp = L.layerGroup([warp_nw, warp_ne, warp_se, warp_sw]);
+
+//menu en haut à droite
+var rasterMaps = {
+    "MinetestForFun Classic World": world,
+};
+
+var latest = world
+
+var overlayMaps = {
+	'Players' : players,
+    "Points Of Interrest" : group_poi,
+	"Warp Crystals" : group_warp,
+	};
+
+var map = L.map('map', {
+    center: [0,0],
+    zoom: 3,
+    layers: [latest, players],
+// pour en cocher d'autres -> layers: [latest, players,group_warp,group_poi],
+    worldCopyJump: false,
+    crs: L.CRS.Direct});
+
+L.control.coordinates({
+    position:"topright", //optional default "bootomright"
+    decimals:0, //optional default 4
+    decimalSeperator:".", //optional default "."
+    labelTemplateLat:"X: {y}", //optional default "Lat: {y}"
+    labelTemplateLng:"Y: {x}", //optional default "Lng: {x}"
+    enableUserInput:false, //optional default true
+    useDMS:false, //optional default false
+    useLatLngOrder: true //ordering of labels, default false-> lng-lat
+}).addTo(map);
+
+var manualUpdateControl;
+if (useWebsocket && 'WebSocket' in window) {
+    L.autoUpdate('autoUpdate', function(pressed) {
+        var styleDec = manualUpdateControl.getContainer().style;
+        styleDec.visibility = pressed ? 'hidden' : 'visible';
+    },
+    players);
+}
+var layersControl = new L.Control.Layers(rasterMaps, overlayMaps, {collapsed: false});
+map.addControl(layersControl);
+
+manualUpdateControl = L.easyButton('fa-refresh',
+    function (){
+        var tiles = document.getElementsByTagName("img");
+        for (var i = 0; i < tiles.length; i++) {
+            var img = tiles[i];
+            var cl = img.getAttribute("class");
+            if (cl.indexOf("leaflet-tile-loaded") >= 0) {
+                var src = img.src;
+                var idx = src.lastIndexOf("#");
+                if (idx >= 0) {
+                    src = src.substring(0, idx);
+                }
+                img.src = src + "#" + Math.random();
+            }
+        }
+        //map._resetView(map.getCenter(), map.getZoom(), false);
+        players.refresh("/players");
+    },
+    'Update view'
+);
+    var hash = new L.Hash(map)
+    </script>
+</body>
+</html>

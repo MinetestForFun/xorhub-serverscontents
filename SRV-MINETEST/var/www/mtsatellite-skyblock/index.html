@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MinetestForFun Skyblock World</title>
+<meta charset="utf-8" />
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/Leaflet.Coordinates-0.1.4.css" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="css/leaflet.awesome-markers.css" />
+    <style type="text/css">
+        body {
+            height: 100%;
+        }
+
+        #map {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111111;
+        }
+
+        .leaflet-container {
+            cursor: crosshair;
+        }
+
+        .leaflet-control-coordinates,
+        .leaflet-control-layers {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            background-color:rgba(255,255,255,.85);
+        }
+        .awesome-marker i {
+            font-size: 18px;
+            margin-left: -1px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="js/leaflet.js"></script>
+    <script src="js/Leaflet.Coordinates-0.1.4.min.js"></script>
+    <script src="js/easy-button.js"></script>
+    <script src="js/auto-update.js"></script>
+    <script type="text/javascript" src="js/leaflet-hash.js"></script>
+    <script type="text/javascript" src="js/leaflet.ajax.js"></script>
+    <script type="text/javascript" src="js/leaflet.awesome-markers.js"></script>
+    <script>
+
+var useWebsocket = true; // Set to true if you want websocket support
+
+L.Projection.NoWrap = {
+    project: function (latlng) {
+        return new L.Point(latlng.lat, latlng.lng);
+    },
+
+    unproject: function (point, unbounded) {
+        return new L.LatLng(point.x, point.y, true);
+    }
+};
+
+L.CRS.Direct = L.Util.extend({}, L.CRS, {
+    code: 'Direct',
+    projection: L.Projection.NoWrap,
+    transformation: new L.Transformation(1.0/65536, 30928.0/65536, -1.0/65536, 34608.0/65536)
+});
+
+var world = new L.tileLayer('map/{z}/{x}/{y}.png', {
+    minZoom: 0,
+    maxZoom: 16,
+    attribution: 'MinetestForFun Skyblock World',
+    continuousWorld: false,
+    noWrap: true,
+    tms: true,
+    unloadInvisibleTiles: true
+});
+
+var players = L.geoJson.ajax('/players', {
+    pointToLayer: function(feature, latlng) {
+        return L.marker(latlng, {
+            icon: L.AwesomeMarkers.icon({
+                icon: 'male',
+                iconColor: 'black',
+                prefix: 'fa',
+                markerColor: 'green'
+            }),
+            title: feature.properties.name
+        })
+    }
+});
+
+//
+// Spawn (Point Of Interrest)
+//
+// No spawn on the SKYLBOCK server
+
+//
+// Constructions des joueurs (Point Of Interrest)
+//
+var expentr = L.marker([16539, 15632],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange',
+}),
+}).bindPopup("E² - Experimental Enterprises (by cessna151)");
+
+var skypalace = L.marker([16512, 15712],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Skypalace (by cessna151)")
+
+var tri_Towers_plaza = L.marker([16368, 15792],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Tri-Towers Plaza (by cessna151)")
+
+var citadel = L.marker([16241, 15920],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Citadel (by gravgun)")
+
+var eiffel_tower = L.marker([15569, 15662],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Eiffel Tower")
+
+var appletree_farm = L.marker([16672, 15616],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Apple Tree Farm (by barsik)")
+
+var private_library = L.marker([16640, 15723],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Private Library (by dotti)")
+
+var small_castle = L.marker([15840, 16032],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Small Castle (by SaphireKnight)")
+
+var strange_tower = L.marker([15840, 15585],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Strange Tower (by everamzah)")
+
+var iu_residence_hall = L.marker([16384, 15879],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("IU Residence Hall (by cessna151)")
+
+var monte_sancho = L.marker([15778, 15904],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Monte Sancho (by Sancho)")
+
+var monk_suite = L.marker([15535, 15372],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Monk Suite (by Legbiter)")
+
+var red_cross = L.marker([16097, 15840],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Red Cross (by Fireboy)")
+
+var ice_castle = L.marker([15623, 15626],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Ice Castle (by LizzardBeth)")
+
+var sandstone_castle = L.marker([15631, 15681],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Sandstone Castle (by LizzardBeth)")
+
+var tiberium_corp = L.marker([16432, 15714],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Tiberium Corp. (by cessna151)")
+
+var idic_provincial_hospital = L.marker([16442, 15783],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("IDIC Provincial Hospital (by cessna151)")
+
+var meigs_avionics_inc = L.marker([16416, 15809],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Meigs Avionics Inc. (by cessna151)")
+
+var maxis_manor_estates = L.marker([16486, 15798],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Maxis Manor Estates (by cessna151)")
+
+var flying_inca = L.marker([15879, 15069],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Flying inca. (by R_R_E_Designs)")
+
+var the_castle = L.marker([16700, 17500],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("The Castle (by VaultBoy)")
+
+var drift_tower = L.marker([15764, 15258],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Drift Tower (by ihatedrift)")
+
+var emokitty_platform = L.marker([15813, 15343],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("EmoKitty Platform (by ihatedrift)")
+
+var massive_maze = L.marker([15835, 15324],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Massive Maze (by ihatedrift & VaultBoy)")
+
+var base_de_higuys = L.marker([17123, 17216],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Base de higuys (by higuys)")
+
+var group_poi = L.layerGroup([expentr, skypalace, tri_Towers_plaza, citadel, eiffel_tower, appletree_farm, private_library, 
+				small_castle, strange_tower, iu_residence_hall, monte_sancho, monk_suite, red_cross, ice_castle,
+				sandstone_castle, tiberium_corp, idic_provincial_hospital, meigs_avionics_inc, maxis_manor_estates,
+				flying_inca, the_castle, drift_tower, emokitty_platform, massive_maze, base_de_higuys]);
+
+//menu en haut à droite
+var rasterMaps = {
+    "MinetestForFun Skyblock World": world,
+};
+
+var latest = world
+
+var overlayMaps = {
+	'Players' : players,
+    "Points Of Interrest" : group_poi,
+	//"Warp Crystals" : group_warp,
+	};
+
+var map = L.map('map', {
+    center: [0,0],
+    zoom: 3,
+    layers: [latest, players],
+// pour en cocher d'autres -> layers: [latest, players,group_warp,group_poi],
+    worldCopyJump: false,
+    crs: L.CRS.Direct});
+
+L.control.coordinates({
+    position:"topright", //optional default "bootomright"
+    decimals:0, //optional default 4
+    decimalSeperator:".", //optional default "."
+    labelTemplateLat:"X: {y}", //optional default "Lat: {y}"
+    labelTemplateLng:"Y: {x}", //optional default "Lng: {x}"
+    enableUserInput:false, //optional default true
+    useDMS:false, //optional default false
+    useLatLngOrder: true //ordering of labels, default false-> lng-lat
+}).addTo(map);
+
+var manualUpdateControl;
+if (useWebsocket && 'WebSocket' in window) {
+    L.autoUpdate('autoUpdate', function(pressed) {
+        var styleDec = manualUpdateControl.getContainer().style;
+        styleDec.visibility = pressed ? 'hidden' : 'visible';
+    },
+    players);
+}
+var layersControl = new L.Control.Layers(rasterMaps, overlayMaps, {collapsed: false});
+map.addControl(layersControl);
+
+manualUpdateControl = L.easyButton('fa-refresh',
+    function (){
+        var tiles = document.getElementsByTagName("img");
+        for (var i = 0; i < tiles.length; i++) {
+            var img = tiles[i];
+            var cl = img.getAttribute("class");
+            if (cl.indexOf("leaflet-tile-loaded") >= 0) {
+                var src = img.src;
+                var idx = src.lastIndexOf("#");
+                if (idx >= 0) {
+                    src = src.substring(0, idx);
+                }
+                img.src = src + "#" + Math.random();
+            }
+        }
+        //map._resetView(map.getCenter(), map.getZoom(), false);
+        players.refresh("/players");
+    },
+    'Update view'
+);
+    var hash = new L.Hash(map)
+    </script>
+</body>
+</html>
