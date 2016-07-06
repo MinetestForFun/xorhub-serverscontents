@@ -14,12 +14,12 @@ git submodule sync
 git submodule update --init --recursive || fatal 'La MaJ des submodules a échouée !'
 
 # On sauvegarde les anciens ../games et ../mods
-rm -R /home/quentinbd/upgrade-mff-creative/olds-part/games/
-rm -R /home/quentinbd/upgrade-mff-creative/olds-part/mods/
+rm -R /home/quentinbd/scripts/upgrade-mff-creative/olds-part/games/
+rm -R /home/quentinbd/scripts/upgrade-mff-creative/olds-part/mods/
 echo ">>> Ancienne sauvegarde de /mods et /games correctement supprimée. <<<"
 
-cp -R /home/quentinbd/mff-creative/mods/ /home/quentinbd/upgrade-mff-creative/olds-part/
-cp -R /home/quentinbd/mff-creative/games/ /home/quentinbd/upgrade-mff-creative/olds-part/
+cp -R /home/quentinbd/mff-creative/mods/ /home/quentinbd/scripts/upgrade-mff-creative/olds-part/
+cp -R /home/quentinbd/mff-creative/games/ /home/quentinbd/scripts/upgrade-mff-creative/olds-part/
 echo ">>> Sauvegarde de /mods et /games correctement effectuée. <<<"
 
 # On MAJ les nouveaux minetest/games et minetest/mods

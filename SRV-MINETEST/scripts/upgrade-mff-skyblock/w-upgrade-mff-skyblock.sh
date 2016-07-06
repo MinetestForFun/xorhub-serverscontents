@@ -2,18 +2,18 @@
 cd /home/quentinbd/mff-skyblock/
 
 # Suppression des anciens fichiers
-rm -Rv /home/quentinbd/upgrade-mff-skyblock/olds
-rm -Rv /home/quentinbd/upgrade-mff-skyblock/mff-skyblock.tar.gz
+rm -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/olds
+rm -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/mff-skyblock.tar.gz
 
 # Sauvegarde des fichiers critiques
 mkdir /home/quentinbd/mff-skyblock/games/minetestforfun_skyblock/
-cp -Rv /home/quentinbd/mff-skyblock/games/minetestforfun_skyblock/ /home/quentinbd/upgrade-mff-skyblock/olds/
-cp -Rv /home/quentinbd/mff-skyblock/mods/ /home/quentinbd/upgrade-mff-skyblock/olds/
-cp -Rv /home/quentinbd/mff-skyblock/worlds/ /home/quentinbd/upgrade-mff-skyblock/olds/
-cp /home/quentinbd/mff-skyblock/minetest.conf /home/quentinbd/upgrade-mff-skyblock/olds/
+cp -Rv /home/quentinbd/mff-skyblock/games/minetestforfun_skyblock/ /home/quentinbd/scripts/upgrade-mff-skyblock/olds/
+cp -Rv /home/quentinbd/mff-skyblock/mods/ /home/quentinbd/scripts/upgrade-mff-skyblock/olds/
+cp -Rv /home/quentinbd/mff-skyblock/worlds/ /home/quentinbd/scripts/upgrade-mff-skyblock/olds/
+cp /home/quentinbd/mff-skyblock/minetest.conf /home/quentinbd/scripts/upgrade-mff-skyblock/olds/
 
 # Sauvegarde et compression du dossier minetest (au cas ou)
-cd /home/quentinbd/upgrade-mff-skyblock/
+cd /home/quentinbd/scripts/upgrade-mff-skyblock/
 tar -cf mff-skyblock.tar.gz /home/quentinbd/mff-skyblock/
 
 # Suppression de minetest
@@ -35,10 +35,10 @@ cmake . -DBUILD_CLIENT=0 -DBUILD_SERVER=1 -DRUN_IN_PLACE=1 -DENABLE_GETTEXT=1 -D
 make -j$(grep -c processor /proc/cpuinfo)
 
 # Ajout des fichiers critiques au nouveau dossier minetest
-cp -Rv /home/quentinbd/upgrade-mff-skyblock/olds/minetestforfun_skyblock/ /home/quentinbd/mff-skyblock/games/
-cp -Rv /home/quentinbd/upgrade-mff-skyblock/olds/mods/ /home/quentinbd/mff-skyblock/
-cp -Rv /home/quentinbd/upgrade-mff-skyblock/olds/worlds/ /home/quentinbd/mff-skyblock/
-cp /home/quentinbd/upgrade-mff-skyblock/olds/minetest.conf /home/quentinbd/mff-skyblock/
+cp -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/olds/minetestforfun_skyblock/ /home/quentinbd/mff-skyblock/games/
+cp -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/olds/mods/ /home/quentinbd/mff-skyblock/
+cp -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/olds/worlds/ /home/quentinbd/mff-skyblock/
+cp /home/quentinbd/scripts/upgrade-mff-skyblock/olds/minetest.conf /home/quentinbd/mff-skyblock/
 
 # Donne les droits à quentinbd
 chmod -R 755 /home/quentinbd/mff-skyblock/

@@ -14,12 +14,12 @@ git submodule sync
 git submodule update --init --recursive || fatal 'La MaJ des submodules a échouée !'
 
 # On sauvegarde les anciens ../games et ../mods
-rm -R /home/quentinbd/upgrade-mff-skyblock/olds-part/games/
-rm -R /home/quentinbd/upgrade-mff-skyblock/olds-part/mods/
+rm -R /home/quentinbd/scripts/upgrade-mff-skyblock/olds-part/games/
+rm -R /home/quentinbd/scripts/upgrade-mff-skyblock/olds-part/mods/
 echo ">>> Ancienne sauvegarde de /mods et /games correctement supprimée. <<<"
 
-cp -R /home/quentinbd/mff-skyblock/mods/ /home/quentinbd/upgrade-mff-skyblock/olds-part/
-cp -R /home/quentinbd/mff-skyblock/games/ /home/quentinbd/upgrade-mff-skyblock/olds-part/
+cp -R /home/quentinbd/mff-skyblock/mods/ /home/quentinbd/scripts/upgrade-mff-skyblock/olds-part/
+cp -R /home/quentinbd/mff-skyblock/games/ /home/quentinbd/scripts/upgrade-mff-skyblock/olds-part/
 echo ">>> Sauvegarde de /mods et /games correctement effectuée. <<<"
 
 # On MAJ les nouveaux minetest/games et minetest/mods

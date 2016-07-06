@@ -2,17 +2,17 @@
 cd /home/quentinbd/mff/
 
 # Suppression des anciens fichiers
-rm -Rv /home/quentinbd/upgrade-mff/olds
-rm -Rv /home/quentinbd/upgrade-mff/mff.tar.gz
+rm -Rv /home/quentinbd/scripts/upgrade-mff/olds
+rm -Rv /home/quentinbd/scripts/upgrade-mff/mff.tar.gz
 
 # Sauvegarde des fichiers critiques
-cp -Rv /home/quentinbd/mff/games/minetestforfun_game/ /home/quentinbd/upgrade-mff/olds/
-cp -Rv /home/quentinbd/mff/mods/ /home/quentinbd/upgrade-mff/olds/
-cp -Rv /home/quentinbd/mff/worlds/ /home/quentinbd/upgrade-mff/olds/
-cp /home/quentinbd/mff/minetest.conf /home/quentinbd/upgrade-mff/olds/
+cp -Rv /home/quentinbd/mff/games/minetestforfun_game/ /home/quentinbd/scripts/upgrade-mff/olds/
+cp -Rv /home/quentinbd/mff/mods/ /home/quentinbd/scripts/upgrade-mff/olds/
+cp -Rv /home/quentinbd/mff/worlds/ /home/quentinbd/scripts/upgrade-mff/olds/
+cp /home/quentinbd/mff/minetest.conf /home/quentinbd/scripts/upgrade-mff/olds/
 
 # Sauvegarde et compression du dossier minetest (au cas ou)
-cd /home/quentinbd/upgrade-mff/
+cd /home/quentinbd/scripts/upgrade-mff/
 tar -cf mff.tar.gz /home/quentinbd/mff/
 
 # Suppression de minetest
@@ -34,10 +34,10 @@ cmake . -DBUILD_CLIENT=0 -DBUILD_SERVER=1 -DENABLE_REDIS=1 -DRUN_IN_PLACE=1 -DEN
 make -j$(grep -c processor /proc/cpuinfo)
 
 # Ajout des fichiers critiques au nouveau dossier minetest
-cp -Rv /home/quentinbd/upgrade-mff/olds/minetestforfun_game/ /home/quentinbd/mff/games/
-cp -Rv /home/quentinbd/upgrade-mff/olds/mods/ /home/quentinbd/mff/
-cp -Rv /home/quentinbd/upgrade-mff/olds/worlds/ /home/quentinbd/mff/
-cp /home/quentinbd/upgrade-mff/olds/minetest.conf /home/quentinbd/mff/
+cp -Rv /home/quentinbd/scripts/upgrade-mff/olds/minetestforfun_game/ /home/quentinbd/mff/games/
+cp -Rv /home/quentinbd/scripts/upgrade-mff/olds/mods/ /home/quentinbd/mff/
+cp -Rv /home/quentinbd/scripts/upgrade-mff/olds/worlds/ /home/quentinbd/mff/
+cp /home/quentinbd/scripts/upgrade-mff/olds/minetest.conf /home/quentinbd/mff/
 
 # Donne les droits à quentinbd
 chmod -R 755 /home/quentinbd/mff/

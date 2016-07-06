@@ -2,17 +2,17 @@
 cd /home/quentinbd/mff-creative/
 
 # Suppression des anciens fichiers
-rm -Rv /home/quentinbd/upgrade-mff-creative/olds
-rm -Rv /home/quentinbd/upgrade-mff-creative/mff-creative.tar.gz
+rm -Rv /home/quentinbd/scripts/upgrade-mff-creative/olds
+rm -Rv /home/quentinbd/scripts/upgrade-mff-creative/mff-creative.tar.gz
 
 # Sauvegarde des fichiers critiques
-cp -Rv /home/quentinbd/mff-creative/games/minetestforfun_creative/ /home/quentinbd/upgrade-mff-creative/olds/
-cp -Rv /home/quentinbd/mff-creative/mods/ /home/quentinbd/upgrade-mff-creative/olds/
-cp -Rv /home/quentinbd/mff-creative/worlds/ /home/quentinbd/upgrade-mff-creative/olds/
-cp /home/quentinbd/mff-creative/minetest.conf /home/quentinbd/upgrade-mff-creative/olds/
+cp -Rv /home/quentinbd/mff-creative/games/minetestforfun_creative/ /home/quentinbd/scripts/upgrade-mff-creative/olds/
+cp -Rv /home/quentinbd/mff-creative/mods/ /home/quentinbd/scripts/upgrade-mff-creative/olds/
+cp -Rv /home/quentinbd/mff-creative/worlds/ /home/quentinbd/scripts/upgrade-mff-creative/olds/
+cp /home/quentinbd/mff-creative/minetest.conf /home/quentinbd/scripts/upgrade-mff-creative/olds/
 
 # Sauvegarde et compression du dossier minetest (au cas ou)
-cd /home/quentinbd/upgrade-mff-creative/
+cd /home/quentinbd/scripts/upgrade-mff-creative/
 tar -cf mff-creative.tar.gz /home/quentinbd/mff-creative/
 
 # Suppression de minetest
@@ -34,10 +34,10 @@ cmake . -DBUILD_CLIENT=0 -DBUILD_SERVER=1 -DRUN_IN_PLACE=1 -DENABLE_GETTEXT=1 -D
 make -j$(grep -c processor /proc/cpuinfo)
 
 # Ajout des fichiers critiques au nouveau dossier minetest
-cp -Rv /home/quentinbd/upgrade-mff-creative/olds/minetestforfun_creative/ /home/quentinbd/mff-creative/games/
-cp -Rv /home/quentinbd/upgrade-mff-creative/olds/mods/ /home/quentinbd/mff-creative/
-cp -Rv /home/quentinbd/upgrade-mff-creative/olds/worlds/ /home/quentinbd/mff-creative/
-cp /home/quentinbd/upgrade-mff-creative/olds/minetest.conf /home/quentinbd/mff-creative/
+cp -Rv /home/quentinbd/scripts/upgrade-mff-creative/olds/minetestforfun_creative/ /home/quentinbd/mff-creative/games/
+cp -Rv /home/quentinbd/scripts/upgrade-mff-creative/olds/mods/ /home/quentinbd/mff-creative/
+cp -Rv /home/quentinbd/scripts/upgrade-mff-creative/olds/worlds/ /home/quentinbd/mff-creative/
+cp /home/quentinbd/scripts/upgrade-mff-creative/olds/minetest.conf /home/quentinbd/mff-creative/
 
 # Donne les droits à quentinbd
 chmod -R 755 /home/quentinbd/mff-creative/
