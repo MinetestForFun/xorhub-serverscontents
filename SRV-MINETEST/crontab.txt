@@ -1,9 +1,9 @@
 ############
 ### NEWS ###
 ############
-# Synchronisation des news avec quentinbd@192.168.1.20 - toutes les minutes (en diff�rentiel)
+# Synchronisation des news avec quentinbd@192.168.1.20 - toutes les minutes (en différentiel)
 #*/1 * * * * /home/quentinbd/script/news-mff-rsync.sh
-# Remplac� par le fichier RAW depuis Github
+# Remplacé par RAW depuis Github
 
 ####################
 ### LOGS SERVERS ###
@@ -18,7 +18,7 @@
 #30 6 * * * kill -2 $(pgrep 'minetest')
 
 ### MFF CLASSIC ###
-# Kill des screens contenant "mff-classic" tous les jours � 6h31
+# Kill des screens contenant "mff-classic" tous les jours à 6h31
 31 6 * * * screen -S "mff-classic-mtseeder" -X quit
 31 6 * * * screen -S "mff-classic-mtwebmapper" -X quit
 31 6 * * * screen -S "mff-classic" -X quit
@@ -26,7 +26,7 @@
 #31 6 * * * /home/quentinbd/script/mff-cronexec.sh cl stop
 
 ### MFF HG ###
-# Kill des screens contenant "mff-hg" tous les jours � 6h31
+# Kill des screens contenant "mff-hg" tous les jours à 6h31
 31 6 * * * screen -S "mff-hg-mtseeder" -X quit
 31 6 * * * screen -S "mff-hg-mtwebmapper" -X quit
 31 6 * * * screen -S "mff-hg" -X quit
@@ -34,7 +34,7 @@
 #31 6 * * * /home/quentinbd/script/mff-cronexec.sh hg stop
 
 ### MFF SKYBLOCK ###
-# Kill des screens contenant "mff-skyblock" tous les jours � 6h31
+# Kill des screens contenant "mff-skyblock" tous les jours à 6h31
 31 6 * * * screen -S "mff-skyblock-mtseeder" -X quit
 31 6 * * * screen -S "mff-skyblock-mtwebmapper" -X quit
 31 6 * * * screen -S "mff-skyblock" -X quit
@@ -42,15 +42,134 @@
 #31 6 * * * /home/quentinbd/script/mff-cronexec.sh sb stop
 
 ### MFF CREATIVE ###
-# Kill des screens contenant "mff-creative" tous les jours � 6h31
+# Kill des screens contenant "mff-creative" tous les jours à 6h31
 31 6 * * * screen -S "mff-creative-mtseeder" -X quit
 31 6 * * * screen -S "mff-creative-mtwebmapper" -X quit
 31 6 * * * screen -S "mff-creative" -X quit
 31 6 * * * screen -S "mff-creative-mtredisalize" -X quit
 #31 6 * * * /home/quentinbd/script/mff-cronexec.sh cr stop
 
+# Crontab root => Redémarrage du serveur à 6h32
+
+#####################
+### SERVERS START ###
+#####################
+
+### MFF CLASSIC ###
+# automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-classic" - tous                                                                                                                           les jours à 6h35 du matin
+35 6 * * * screen -dmS "mff-classic-automappercolors" /home/quentinbd/mff/mods/automappercolors/process.py /home/qu                                                                                                                          entinbd/mff/worlds/minetestforfun/ /home/quentinbd/mff/
+# Redisalize pour "mff-classic" - tous les jours à 6h36 du matin
+36 6 * * * screen -dmS "mff-classic-mtredisalize" /home/quentinbd/gopath/bin/mtredisalize -host=localhost -port=637                                                                                                                          9 -interleaved=true -change-url=http://localhost:8808/update -change-duration=15s /home/quentinbd/mff/worlds/minete                                                                                                                          stforfun/map.db
+# Seeder pour "mff-classic" - tous les jours à 6h37 - dure 10/15min
+37 6 * * * screen -dmS "mff-classic-mtseeder" /home/quentinbd/gopath/bin/mtseeder -colors=/home/quentinbd/mff/world                                                                                                                          s/minetestforfun/colors.txt -output-dir=/home/quentinbd/mff/worlds/minetestforfun/map.db -workers=1 -transparent=tr                                                                                                                          ue -port=6379
+# Webmapper pour "mff-classic" - tous les jours à 6h49
+49 6 * * * screen -dmS "mff-classic-mtwebmapper" /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff                                                                                                                          /worlds/minetestforfun/colors.txt -web-host="" -web-port=8808 -map=/home/quentinbd/mff/worlds/minetestforfun/map.db                                                                                                                           -web=/var/www/mtsatellite -redis-host=localhost -redis-port=6379 -workers=1 -transparent=true -websockets=true -pl                                                                                                                          ayers=/home/quentinbd/mff/worlds/minetestforfun/mt_players_fifo ulimit -n 4096
+# Lancement de "mff-classic" tous les jours à 6h50
+50 6 * * * screen -dmS "mff-classic" /home/quentinbd/script/start-mff.sh
+#35 6 * * * /home/quentinbd/script/mff-cronexec.sh cl start 30 0 400 0
+
+### MFF HG ###
+# automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-hg" - tous les                                                                                                                           jours à 6h35 du matin
+35 6 * * * screen -dmS "mff-hg-automappercolors" /home/quentinbd/mff-hg/games/minetestforfun_hg/mods/automappercolo                                                                                                                          rs/process.py /home/quentinbd/mff-hg/worlds/minetestforfun-hg /home/quentinbd/mff-hg/
+# Redisalize pour "mff-hg" - tous les jours à 6h36 du matin
+36 6 * * * screen -dmS "mff-hg-mtredisalize" /home/quentinbd/gopath/bin/mtredisalize -host=localhost -port=6380 -in                                                                                                                          terleaved=true -change-url=http://localhost:8809/update -change-duration=15s /home/quentinbd/mff-hg/worlds/minetest                                                                                                                          forfun-hg/map.db
+# Seeder pour "mff-hg" - tous les jours à 6h37 - dure 10/15min
+37 6 * * * screen -dmS "mff-hg-mtseeder" /home/quentinbd/gopath/bin/mtseeder -colors=/home/quentinbd/mff-hg/worlds/                                                                                                                          minetestforfun-hg/colors.txt -output-dir=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db -workers=1 -transpa                                                                                                                          rent=true -port=6380
+# Webmapper pour "mff" - tous les jours à 6h49
+# Désactivé pour l'instant car manque de CPU --> 49 6 * * * screen -dmS "mff-hg-mtwebmapper" /home/quentinbd/gopath                                                                                                                          /bin/mtwebmapper -colors=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/colors.txt -web-host="" -web-port=8809 -ma                                                                                                                          p=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db -web=/var/www/mtsatellite-hg -redis-host=localhost -redis-                                                                                                                          port=6380 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/mt                                                                                                                          _players_fifo ulimit -n 4096
+# Lancement de "mff-hg" tous les jours à 6h50
+50 6 * * * screen -dmS "mff-hg" /home/quentinbd/script/start-mff-hg.sh
+# 3 paramètre initialement à 180, mais c'est le hg donc peu de changement de map
+#35 6 * * * /home/quentinbd/script/mff-cronexec.sh hg start 30 0 0 0
+
+### MFF SKYBLOCK ###
+# Lancement de "mff-skyblock" tous les jours à 6h35
+# automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-skyblock" - tou                                                                                                                          s les jours à 6h35 du matin
+35 6 * * * screen -dmS "mff-skyblock-automappercolors" /home/quentinbd/mff-skyblock/games/minetestforfun_skyblock/m                                                                                                                          ods/automappercolors/process.py /home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock /home/quentinbd/mff-sky                                                                                                                          block/
+# Redisalize pour "mff-skyblock" - tous les jours à 6h36 du matin
+36 6 * * * screen -dmS mff-skyblock-mtredisalize /home/quentinbd/gopath/bin/mtredisalize -host=localhost -port=6382                                                                                                                           -interleaved=true -change-url=http://localhost:8811/update -change-duration=15s /home/quentinbd/mff-skyblock/world                                                                                                                          s/minetestforfun-skyblock/map.db
+# Seeder pour "mff-skyblock" - tous les jours à 6h37 - dure 10/15min
+37 6 * * * screen -dmS mff-skyblock-mtseeder /home/quentinbd/gopath/bin/mtseeder -colors=/home/quentinbd/mff-skyblo                                                                                                                          ck/worlds/minetestforfun-skyblock/colors.txt -output-dir=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skybloc                                                                                                                          k/map.db -workers=1 -transparent=true -port=6382
+# Webmapper pour "mff-skyblock" - tous les jours à 6h49
+49 6 * * * screen -dmS mff-skyblock-mtwebmapper /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-                                                                                                                          skyblock/worlds/minetestforfun-skyblock/colors.txt -web-host="" -web-port=8811 -map=/home/quentinbd/mff-skyblock/wo                                                                                                                          rlds/minetestforfun-skyblock/map.db -web=/var/www/mtsatellite-skyblock -redis-host=localhost -redis-port=6382 -work                                                                                                                          ers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/mt_pl                                                                                                                          ayers_fifo ulimit -n 4096
+# Lancement de "mff-skyblock" tous les jours à 6h50
+50 6 * * * screen -dmS "mff-skyblock" /home/quentinbd/script/start-mff-skyblock.sh
+#35 6 * * * /home/quentinbd/script/mff-cronexec.sh sb start 30 0 400 0
+
+### MFF CREATIVE ###
+# Lancement de "mff-creative" tous les jours à 6h35
+# automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-creative" - tou                                                                                                                          s les jours à 6h35 du matin
+35 6 * * * screen -dmS "mff-creative-automappercolors" /home/quentinbd/mff-creative/games/minetestforfun_creative/m                                                                                                                          ods/automappercolors/process.py /home/quentinbd/mff-creative/worlds/minetestforfun-creative /home/quentinbd/mff-cre                                                                                                                          ative/
+# Redisalize pour "mff-creative" - tous les jours à 6h36 du matin
+36 6 * * * screen -dmS mff-creative-mtredisalize /home/quentinbd/gopath/bin/mtredisalize -host=localhost -port=6381                                                                                                                           -interleaved=true -change-url=http://localhost:8810/update -change-duration=15s /home/quentinbd/mff-creative/world                                                                                                                          s/minetestforfun-creative/map.db
+# Seeder pour "mff-creative" - tous les jours à 6h37 - dure 10/15min
+37 6 * * * screen -dmS mff-creative-mtseeder /home/quentinbd/gopath/bin/mtseeder -colors=/home/quentinbd/mff-creati                                                                                                                          ve/worlds/minetestforfun-creative/colors.txt -output-dir=/home/quentinbd/mff-creative/worlds/minetestforfun-creativ                                                                                                                          e/map.db -workers=1 -transparent=true -port=6381
+# Webmapper pour "mff-creative" - tous les jours à 6h49
+49 6 * * * screen -dmS mff-creative-mtwebmapper /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-                                                                                                                          creative/worlds/minetestforfun-creative/colors.txt -web-host="" -web-port=8810 -map=/home/quentinbd/mff-creative/wo                                                                                                                          rlds/minetestforfun-creative/map.db -web=/var/www/mtsatellite-creative -redis-host=localhost -redis-port=6381 -work                                                                                                                          ers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/mt_pl                                                                                                                          ayers_fifo ulimit -n 4096
+# Lancement de "mff-creative" tous les jours à 6h50
+50 6 * * * screen -dmS "mff-creative" /home/quentinbd/script/start-mff-creative.sh
+#35 6 * * * /home/quentinbd/script/mff-cronexec.sh cr start 30 0 400 0
+quentinbd@Minetest:~$ ^C
+quentinbd@Minetest:~$ crontab -e
+crontab: installing new crontab
+Vous avez du nouveau courrier dans /var/mail/quentinbd
+quentinbd@Minetest:~$ crontab -e
+crontab: installing new crontab
+Vous avez du nouveau courrier dans /var/mail/quentinbd
+quentinbd@Minetest:~$ crontab -l
+############
+### NEWS ###
+############
+# Synchronisation des news avec quentinbd@192.168.1.20 - toutes les minutes (en différentiel)
+#*/1 * * * * /home/quentinbd/scripts/news-mff-rsync.sh
+# Remplacé par le fichier RAW depuis Github
+
+####################
+### LOGS SERVERS ###
+####################
+*/1 * * * * /home/quentinbd/scripts/logs-servers-mff-rsync.sh
+
+####################
+### SERVERS STOP ###
+####################
+
+### Safe kill 1min before the screen quit ###
+#30 6 * * * kill -2 $(pgrep 'minetest')
+
+### MFF CLASSIC ###
+# Kill des screens contenant "mff-classic" tous les jours à 6h31
+31 6 * * * screen -S "mff-classic-mtseeder" -X quit
+31 6 * * * screen -S "mff-classic-mtwebmapper" -X quit
+31 6 * * * screen -S "mff-classic" -X quit
+31 6 * * * screen -S "mff-classic-mtredisalize" -X quit
+#31 6 * * * /home/quentinbd/scripts/mff-cronexec.sh cl stop
+
+### MFF HG ###
+# Kill des screens contenant "mff-hg" tous les jours à 6h31
+31 6 * * * screen -S "mff-hg-mtseeder" -X quit
+31 6 * * * screen -S "mff-hg-mtwebmapper" -X quit
+31 6 * * * screen -S "mff-hg" -X quit
+31 6 * * * screen -S "mff-hg-mtredisalize" -X quit
+#31 6 * * * /home/quentinbd/scripts/mff-cronexec.sh hg stop
+
+### MFF SKYBLOCK ###
+# Kill des screens contenant "mff-skyblock" tous les jours à 6h31
+31 6 * * * screen -S "mff-skyblock-mtseeder" -X quit
+31 6 * * * screen -S "mff-skyblock-mtwebmapper" -X quit
+31 6 * * * screen -S "mff-skyblock" -X quit
+31 6 * * * screen -S "mff-skyblock-mtredisalize" -X quit
+#31 6 * * * /home/quentinbd/scripts/mff-cronexec.sh sb stop
+
+### MFF CREATIVE ###
+# Kill des screens contenant "mff-creative" tous les jours à 6h31
+31 6 * * * screen -S "mff-creative-mtseeder" -X quit
+31 6 * * * screen -S "mff-creative-mtwebmapper" -X quit
+31 6 * * * screen -S "mff-creative" -X quit
+31 6 * * * screen -S "mff-creative-mtredisalize" -X quit
+#31 6 * * * /home/quentinbd/scripts/mff-cronexec.sh cr stop
+
 #
-# Crontab root => Red�marrage du serveur � 6h32 (temps de reboot = 3min max)
+# Crontab root => Redémarrage du serveur à 6h32 (temps de reboot = 3min max)
 #
 
 #####################
@@ -58,56 +177,56 @@
 #####################
 
 ### MFF CLASSIC ###
-# automappercolors pour la g�n�ration du "amc_nodes" qui sert � la g�n�ration du colors.txt de "mff-classic" - tous les jours � 6h35 du matin
+# automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-classic" - tous les jours à 6h35 du matin
 35 6 * * * screen -dmS "mff-classic-automappercolors" /home/quentinbd/mff/mods/automappercolors/process.py /home/quentinbd/mff/worlds/minetestforfun/ /home/quentinbd/mff/
-# Redisalize pour "mff-classic" - tous les jours � 6h36 du matin
+# Redisalize pour "mff-classic" - tous les jours à 6h36 du matin
 36 6 * * * screen -dmS "mff-classic-mtredisalize" /home/quentinbd/gopath/bin/mtredisalize -host=localhost -port=6379 -interleaved=true -change-url=http://localhost:8808/update -change-duration=15s /home/quentinbd/mff/worlds/minetestforfun/map.db
-# Seeder pour "mff-classic" - tous les jours � 6h37 - dure 10/15min
+# Seeder pour "mff-classic" - tous les jours à 6h37 - dure 10/15min
 37 6 * * * screen -dmS "mff-classic-mtseeder" /home/quentinbd/gopath/bin/mtseeder -colors=/home/quentinbd/mff/worlds/minetestforfun/colors.txt -output-dir=/home/quentinbd/mff/worlds/minetestforfun/map.db -workers=1 -transparent=true -port=6379
-# Webmapper pour "mff-classic" - tous les jours � 6h49
+# Webmapper pour "mff-classic" - tous les jours à 6h49
 49 6 * * * screen -dmS "mff-classic-mtwebmapper" /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff/worlds/minetestforfun/colors.txt -web-host="" -web-port=8808 -map=/home/quentinbd/mff/worlds/minetestforfun/map.db -web=/var/www/mtsatellite -redis-host=localhost -redis-port=6379 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff/worlds/minetestforfun/mt_players_fifo ulimit -n 4096
-# Lancement de "mff-classic" tous les jours � 6h50
-50 6 * * * screen -dmS "mff-classic" /home/quentinbd/script/start-mff.sh
-#35 6 * * * /home/quentinbd/script/mff-cronexec.sh cl start 30 0 400 0
+# Lancement de "mff-classic" tous les jours à 6h50
+50 6 * * * screen -dmS "mff-classic" /home/quentinbd/scripts/start-mff.sh
+#35 6 * * * /home/quentinbd/scripts/mff-cronexec.sh cl start 30 0 400 0
 
 ### MFF HG ###
-# automappercolors pour la g�n�ration du "amc_nodes" qui sert � la g�n�ration du colors.txt de "mff-hg" - tous les jours � 6h35 du matin
+# automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-hg" - tous les jours à 6h35 du matin
 35 6 * * * screen -dmS "mff-hg-automappercolors" /home/quentinbd/mff-hg/games/minetestforfun_hg/mods/automappercolors/process.py /home/quentinbd/mff-hg/worlds/minetestforfun-hg /home/quentinbd/mff-hg/
-# Redisalize pour "mff-hg" - tous les jours � 6h36 du matin
+# Redisalize pour "mff-hg" - tous les jours à 6h36 du matin
 36 6 * * * screen -dmS "mff-hg-mtredisalize" /home/quentinbd/gopath/bin/mtredisalize -host=localhost -port=6380 -interleaved=true -change-url=http://localhost:8809/update -change-duration=15s /home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db
-# Seeder pour "mff-hg" - tous les jours � 6h37 - dure 10/15min
+# Seeder pour "mff-hg" - tous les jours à 6h37 - dure 10/15min
 37 6 * * * screen -dmS "mff-hg-mtseeder" /home/quentinbd/gopath/bin/mtseeder -colors=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/colors.txt -output-dir=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db -workers=1 -transparent=true -port=6380
-# Webmapper pour "mff" - tous les jours � 6h49
-# D�sactiv� pour l'instant car manque de CPU --> 49 6 * * * screen -dmS "mff-hg-mtwebmapper" /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/colors.txt -web-host="" -web-port=8809 -map=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db -web=/var/www/mtsatellite-hg -redis-host=localhost -redis-port=6380 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/mt_players_fifo ulimit -n 4096
-# Lancement de "mff-hg" tous les jours � 6h50
-50 6 * * * screen -dmS "mff-hg" /home/quentinbd/script/start-mff-hg.sh
-# 3 param�tre initialement � 180, mais c'est le hg donc peu de changement de map
-#35 6 * * * /home/quentinbd/script/mff-cronexec.sh hg start 30 0 0 0
+# Webmapper pour "mff" - tous les jours à 6h49
+# Désactivé pour l'instant car manque de CPU --> 49 6 * * * screen -dmS "mff-hg-mtwebmapper" /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/colors.txt -web-host="" -web-port=8809 -map=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db -web=/var/www/mtsatellite-hg -redis-host=localhost -redis-port=6380 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/mt_players_fifo ulimit -n 4096
+# Lancement de "mff-hg" tous les jours à 6h50
+50 6 * * * screen -dmS "mff-hg" /home/quentinbd/scripts/start-mff-hg.sh
+# 3 paramètre initialement à 180, mais c'est le hg donc peu de changement de map
+#35 6 * * * /home/quentinbd/scripts/mff-cronexec.sh hg start 30 0 0 0
 
 ### MFF SKYBLOCK ###
-# Lancement de "mff-skyblock" tous les jours � 6h35
-# automappercolors pour la g�n�ration du "amc_nodes" qui sert � la g�n�ration du colors.txt de "mff-skyblock" - tous les jours � 6h35 du matin
+# Lancement de "mff-skyblock" tous les jours à 6h35
+# automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-skyblock" - tous les jours à 6h35 du matin
 35 6 * * * screen -dmS "mff-skyblock-automappercolors" /home/quentinbd/mff-skyblock/games/minetestforfun_skyblock/mods/automappercolors/process.py /home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock /home/quentinbd/mff-skyblock/
-# Redisalize pour "mff-skyblock" - tous les jours � 6h36 du matin
+# Redisalize pour "mff-skyblock" - tous les jours à 6h36 du matin
 36 6 * * * screen -dmS mff-skyblock-mtredisalize /home/quentinbd/gopath/bin/mtredisalize -host=localhost -port=6382 -interleaved=true -change-url=http://localhost:8811/update -change-duration=15s /home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/map.db
-# Seeder pour "mff-skyblock" - tous les jours � 6h37 - dure 10/15min
+# Seeder pour "mff-skyblock" - tous les jours à 6h37 - dure 10/15min
 37 6 * * * screen -dmS mff-skyblock-mtseeder /home/quentinbd/gopath/bin/mtseeder -colors=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/colors.txt -output-dir=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/map.db -workers=1 -transparent=true -port=6382
-# Webmapper pour "mff-skyblock" - tous les jours � 6h49
+# Webmapper pour "mff-skyblock" - tous les jours à 6h49
 49 6 * * * screen -dmS mff-skyblock-mtwebmapper /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/colors.txt -web-host="" -web-port=8811 -map=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/map.db -web=/var/www/mtsatellite-skyblock -redis-host=localhost -redis-port=6382 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/mt_players_fifo ulimit -n 4096
-# Lancement de "mff-skyblock" tous les jours � 6h50
-50 6 * * * screen -dmS "mff-skyblock" /home/quentinbd/script/start-mff-skyblock.sh
-#35 6 * * * /home/quentinbd/script/mff-cronexec.sh sb start 30 0 400 0
+# Lancement de "mff-skyblock" tous les jours à 6h50
+50 6 * * * screen -dmS "mff-skyblock" /home/quentinbd/scripts/start-mff-skyblock.sh
+#35 6 * * * /home/quentinbd/scripts/mff-cronexec.sh sb start 30 0 400 0
 
 ### MFF CREATIVE ###
-# Lancement de "mff-creative" tous les jours � 6h35
-# automappercolors pour la g�n�ration du "amc_nodes" qui sert � la g�n�ration du colors.txt de "mff-creative" - tous les jours � 6h35 du matin
+# Lancement de "mff-creative" tous les jours à 6h35
+# automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-creative" - tous les jours à 6h35 du matin
 35 6 * * * screen -dmS "mff-creative-automappercolors" /home/quentinbd/mff-creative/games/minetestforfun_creative/mods/automappercolors/process.py /home/quentinbd/mff-creative/worlds/minetestforfun-creative /home/quentinbd/mff-creative/
-# Redisalize pour "mff-creative" - tous les jours � 6h36 du matin
+# Redisalize pour "mff-creative" - tous les jours à 6h36 du matin
 36 6 * * * screen -dmS mff-creative-mtredisalize /home/quentinbd/gopath/bin/mtredisalize -host=localhost -port=6381 -interleaved=true -change-url=http://localhost:8810/update -change-duration=15s /home/quentinbd/mff-creative/worlds/minetestforfun-creative/map.db
-# Seeder pour "mff-creative" - tous les jours � 6h37 - dure 10/15min
+# Seeder pour "mff-creative" - tous les jours à 6h37 - dure 10/15min
 37 6 * * * screen -dmS mff-creative-mtseeder /home/quentinbd/gopath/bin/mtseeder -colors=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/colors.txt -output-dir=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/map.db -workers=1 -transparent=true -port=6381
-# Webmapper pour "mff-creative" - tous les jours � 6h49
+# Webmapper pour "mff-creative" - tous les jours à 6h49
 49 6 * * * screen -dmS mff-creative-mtwebmapper /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/colors.txt -web-host="" -web-port=8810 -map=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/map.db -web=/var/www/mtsatellite-creative -redis-host=localhost -redis-port=6381 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/mt_players_fifo ulimit -n 4096
-# Lancement de "mff-creative" tous les jours � 6h50
-50 6 * * * screen -dmS "mff-creative" /home/quentinbd/script/start-mff-creative.sh
-#35 6 * * * /home/quentinbd/script/mff-cronexec.sh cr start 30 0 400 0
+# Lancement de "mff-creative" tous les jours à 6h50
+50 6 * * * screen -dmS "mff-creative" /home/quentinbd/scripts/start-mff-creative.sh
+#35 6 * * * /home/quentinbd/scripts/mff-cronexec.sh cr start 30 0 400 0
