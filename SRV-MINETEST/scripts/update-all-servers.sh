@@ -77,4 +77,3 @@ screen -dmS "mff-classic" /home/quentinbd/script/start-mff.sh
 
 echo ">>> Démarrage de tous les serveurs - OK <<<"
 echo ">>> Tous les serveurs ont bien été UPDATE et REDEMARRÉ <<<"
-
