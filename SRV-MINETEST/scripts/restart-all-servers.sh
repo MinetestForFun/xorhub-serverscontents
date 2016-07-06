@@ -23,7 +23,7 @@ screen -S "mff-creative" -X quit
 sleep 1
 echo ">>> Arrêt de tous les serveurs - OK <<<"
 
-### Démarrage des serveurs ###
+### Démarrage des serveurs ### test
 echo ">>> Démarrage de tous les serveurs - En cours... <<<"
 sleep 1
 screen -dmS "mff-classic-automappercolors" /home/quentinbd/mff/mods/automappercolors/process.py /home/quentinbd/mff/worlds/minetestforfun/ /home/quentinbd/mff/
