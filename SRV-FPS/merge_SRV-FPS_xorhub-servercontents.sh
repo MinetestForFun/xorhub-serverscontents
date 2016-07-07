@@ -9,11 +9,11 @@ fatal() {
   exit
 }
 
-# On récupère la dernière du dépôt
+# On récupère la dernière version du dépôt
 cd /home/quentinbd/ || exit "Le répertoire de l'utilisateur n'existe pas !"
 git clone https://github.com/MinetestForFun/xorhub-serverscontents.git --depth=1 || fatal 'Le clone du dépot a échoué !'
 cd $PATH_CLONED_REPO || exit "Le répertoire cloné n'existe pas !"
-echo ">>> Clone de server-minetestforfun réussit. <<<"
+echo ">>> Clone de xorhub-serverscontents réussit. <<<"
 
 ################################
 ### MAJ du dossier "scripts" ###
