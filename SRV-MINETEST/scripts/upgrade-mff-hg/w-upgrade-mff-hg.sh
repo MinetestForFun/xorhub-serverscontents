@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # passer sur branche master ou stable github
 cd /home/quentinbd/mff-hg/ || exit "Le répertoire du serveur n'existe pas !"

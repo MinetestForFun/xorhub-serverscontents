@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #rsync -e "ssh -i /root/.ssh/id_dsa" -av --delete-after /home/quentinbd/minetest/worlds/minetestforfun/news.txt root@192.168.1.20:/var/www/wordpress/wp-content/uploads/news/
 
 # Check the public key rights
@@ -98,4 +98,3 @@ echo ""
 # On supprime le fichier temporaire
 rm /home/quentinbd/script/notready-moredebug-mff-creative.txt
 rm /home/quentinbd/script/1000-moredebug-mff-creative.txt
-
