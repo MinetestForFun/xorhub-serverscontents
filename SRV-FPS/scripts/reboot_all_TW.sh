@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 screen -S "TeeWorlds_Vanilla_CTF" -X quit
 sleep 1

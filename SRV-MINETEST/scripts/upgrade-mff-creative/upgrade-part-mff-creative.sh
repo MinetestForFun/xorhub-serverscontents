@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 PATH_SCRIPT=/home/quentinbd/scripts/upgrade-mff-creative/
 PATH_SERVER=/home/quentinbd/mff-creative/

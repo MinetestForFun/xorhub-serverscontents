@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 PATH_SCRIPT=/home/quentinbd/scripts/upgrade-mff-skyblock/
 PATH_SERVER=/home/quentinbd/mff-skyblock/

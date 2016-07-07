@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 #rsync -e "ssh -i /root/.ssh/id_dsa" -av --delete-after /home/quentinbd/minetest/worlds/minetestforfun/news.txt root@192.168.1.20:/var/www/wordpress/wp-content/uploads/news/
 
 # Check the public key rights
