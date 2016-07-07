@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEBUG='/home/quentinbd/scripts/debug-mff-hg.txt'
+#DEBUG='/home/quentinbd/scripts/debug-mff-hg.txt'
 MOREDEBUG='/home/quentinbd/scripts/moredebug-mff-hg.txt'
 
 cd /home/quentinbd/mff-hg

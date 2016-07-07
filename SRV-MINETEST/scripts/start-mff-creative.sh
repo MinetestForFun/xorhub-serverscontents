@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEBUG='/home/quentinbd/scripts/debug-mff-creative.txt'
+#DEBUG='/home/quentinbd/scripts/debug-mff-creative.txt'
 MOREDEBUG='/home/quentinbd/scripts/moredebug-mff-creative.txt'
 
 cd /home/quentinbd/mff-creative

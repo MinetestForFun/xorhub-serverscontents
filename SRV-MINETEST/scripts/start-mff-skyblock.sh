@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEBUG='/home/quentinbd/scripts/debug-mff-skyblock.txt'
+#DEBUG='/home/quentinbd/scripts/debug-mff-skyblock.txt'
 MOREDEBUG='/home/quentinbd/scripts/moredebug-mff-skyblock.txt'
 
 cd /home/quentinbd/mff-skyblock
