@@ -3,7 +3,7 @@
 #DEBUG='/home/quentinbd/scripts/debug-mff-skyblock.txt'
 MOREDEBUG='/home/quentinbd/scripts/moredebug-mff-skyblock.txt'
 
-cd /home/quentinbd/mff-skyblock
+cd /home/quentinbd/mff-skyblock || exit "Le répertoire du serveur n'existe pas !"
 
 while true
 	do

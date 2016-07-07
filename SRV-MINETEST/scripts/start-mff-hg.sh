@@ -3,7 +3,7 @@
 #DEBUG='/home/quentinbd/scripts/debug-mff-hg.txt'
 MOREDEBUG='/home/quentinbd/scripts/moredebug-mff-hg.txt'
 
-cd /home/quentinbd/mff-hg
+cd /home/quentinbd/mff-hg || exit "Le répertoire du serveur n'existe pas !"
 
 while true
 	do
