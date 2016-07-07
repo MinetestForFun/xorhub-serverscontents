@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #DEBUG='/home/quentinbd/scripts/debug-mff-hg.txt'
 MOREDEBUG='/home/quentinbd/scripts/moredebug-mff-hg.txt'

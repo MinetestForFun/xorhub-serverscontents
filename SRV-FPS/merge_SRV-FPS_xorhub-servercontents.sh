@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 PATH_CLONED_REPO=/home/quentinbd/xorhub-serverscontents/
 

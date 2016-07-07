@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+
 screen -S "TeeWorlds_Vanilla_CTF" -X quit
 sleep 1
 screen -dmS "TeeWorlds_Vanilla_CTF" /home/quentinbd/TeeWorlds_Vanilla_CTF/teeworlds_srv_d -f /home/quentinbd/TeeWorlds_Vanilla_CTF/serverconfig.cfg
