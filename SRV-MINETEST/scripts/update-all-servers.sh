@@ -44,7 +44,7 @@ echo ">>> Démarrage de tous les serveurs - En cours... <<<"
     sleep 0.5
     screen -dmS "mff-classic-mtwebmapper" /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff/worlds/minetestforfun/colors.txt -web-host="" -web-port=8808 -map=/home/quentinbd/mff/worlds/minetestforfun/map.db -web=/var/www/mtsatellite -redis-host=localhost -redis-port=6379 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff/worlds/minetestforfun/mt_players_fifo ulimit -n 4096
     sleep 0.5
-screen -dmS "mff-classic" /home/quentinbd/script/start-mff.sh
+    screen -dmS "mff-classic" /home/quentinbd/script/start-mff.sh
     sleep 0.5
 ### Hunger Games ###
     echo "Démarrage du serveur MinetestForFun Hunger Games en cours..."
