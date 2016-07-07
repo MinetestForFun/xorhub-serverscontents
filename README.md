@@ -11,7 +11,7 @@ It actually contains crontabs, scripts, server configuration files and maps cont
     - servers schematics (world edit schematics)
   - var/www/mtsatellite* (configuration files for the realtime web worldmap)
   - crontab.txt
- 
+
 - SRV-FPS
   - scripts
   - teeworlds
@@ -20,8 +20,8 @@ It actually contains crontabs, scripts, server configuration files and maps cont
   - warsow
     - server configuration file
   - crontab.txt
- 
+
 
 ## License
 
-All contents here are under the CC-BY-SA 4.0 license.
+All contents here are under the CC-BY-SA 4.0 license. ![ceative_common_by_sa](https://licensebuttons.net/l/by-sa/4.0/88x31.png)
