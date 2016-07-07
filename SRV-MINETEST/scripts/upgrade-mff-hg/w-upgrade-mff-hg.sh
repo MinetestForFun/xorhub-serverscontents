@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # passer sur branche master ou stable github
-cd /home/quentinbd/mff-hg/
+cd /home/quentinbd/mff-hg/ || exit "Le répertoire du serveur n'existe pas !"
 
 # Suppression des anciens fichiers
 rm -Rv /home/quentinbd/scripts/upgrade-mff-hg/olds
@@ -14,14 +14,14 @@ cp -Rv /home/quentinbd/mff-hg/worlds/ /home/quentinbd/scripts/upgrade-mff-hg/old
 cp /home/quentinbd/mff-hg/minetest.conf /home/quentinbd/scripts/upgrade-mff-hg/olds/
 
 # Sauvegarde et compression du dossier minetest (au cas ou)
-cd /home/quentinbd/scripts/upgrade-mff-hg/
+cd /home/quentinbd/scripts/upgrade-mff-hg/ || exit "Le répertoire du script n'existe pas !"
 tar -cf mff-hg.tar.gz /home/quentinbd/mff-hg/
 
 # Suppression de minetest
 rm -Rv /home/quentinbd/mff-hg/
 
 # Réinstallaton de minetest
-cd /home/quentinbd/
+cd /home/quentinbd/ || exit "Le répertoire de l'utilisateur n'existe pas !"
 # DEBUT - Utilisation de la dernière version 0.4 stable
 wget https://codeload.github.com/minetest/minetest/zip/stable-0.4
 unzip /home/quentinbd/stable-0.4
@@ -30,7 +30,7 @@ rm -v /home/quentinbd/stable-0.4
 # FIN - Utilisation de la version 0.4 stable
 
 # Compilation
-cd /home/quentinbd/mff-hg/
+cd /home/quentinbd/mff-hg/ || exit "Le répertoire du serveur n'existe pas !"
 # build SQLITE3
 cmake . -DBUILD_CLIENT=0 -DBUILD_SERVER=1 -DRUN_IN_PLACE=1 -DENABLE_GETTEXT=1 -DENABLE_FREETYPE=1 -DENABLE_LUAJIT=1 -DCMAKE_INSTALL_PREFIX:PATH=/usr
 make -j'$(grep -c processor /proc/cpuinfo)'

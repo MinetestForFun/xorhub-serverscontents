@@ -11,10 +11,10 @@ fatal() {
 }
 
 # On récupère la dernière version du jeu
-cd /home/quentinbd/
+cd /home/quentinbd/ || exit "Le répertoire de l'utilisateur n'existe pas !"
 git clone https://github.com/MinetestForFun/server-minetestforfun.git --depth=1 || fatal 'Le clone du dépot a échoué !'
 echo ">>> Clone de server-minetestforfun réussit. <<<"
-cd /home/quentinbd/server-minetestforfun/
+cd /home/quentinbd/server-minetestforfun/ || exit "Le répertoire cloné n'existe pas !"
 git submodule sync
 git submodule update --init --recursive || fatal 'La MaJ des submodules a échouée !'
 
@@ -68,4 +68,3 @@ chown -R quentinbd:quentinbd $PATH_SERVER
 chmod -R 755 $PATH_SERVER
 echo ''
 echo -e "\e[2mRé-attribution des droits à quentinbd:quentinbd.\e[22m"
-#false || fatal 'Ceci est un échec cuisant totalement fictif, pour montrer les couleurs'
