@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 reboot_mffclassic() {
     echo "Arrêt du serveur MinetestForFun Classic en cours..."

@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 ### ATTENTION ! Ce script effectue un REDEMARRAGE et un UPDATE de tous les serveurs !!! ###
 
