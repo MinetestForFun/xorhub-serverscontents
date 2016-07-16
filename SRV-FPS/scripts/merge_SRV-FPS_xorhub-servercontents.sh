@@ -18,7 +18,7 @@ echo ">>> Clone de xorhub-serverscontents réussit. <<<"
 ################################
 ### MAJ du dossier "scripts" ###
 ################################
-cp $PATH_CLONED_REPO/scripts/* /home/quentinbd/scripts/
+cp $PATH_CLONED_REPO/SRV-FPS/scripts/* /home/quentinbd/scripts/
 
 #####################
 ### MAJ TeeWorlds ###

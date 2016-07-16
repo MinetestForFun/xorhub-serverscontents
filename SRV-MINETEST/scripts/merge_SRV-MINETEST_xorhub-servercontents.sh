@@ -18,7 +18,7 @@ echo ">>> Clone de xorhub-serverscontents réussit. <<<"
 ################################
 ### MAJ du dossier "scripts" ###
 ################################
-cp -R $PATH_CLONED_REPO/scripts/* /home/quentinbd/scripts/
+cp -R $PATH_CLONED_REPO/SRV-MINETEST/scripts/* /home/quentinbd/scripts/
 
 #####################
 ### MAJ Minetest ###
@@ -43,7 +43,7 @@ cp $PATH_CLONED_REPO/SRV-MINETEST/minetest/mff-skyblock/worlds/minetestforfun-sk
 ### MAJ MTsatellite ###
 #######################
 # MTsatellite configuration file
-cp -R $PATH_CLONED_REPO/var/www/* /var/www/*
+cp -R $PATH_CLONED_REPO/SRV-MINETEST/var/www/* /var/www/*
 
 # Suppression du dossier cloné
 rm -Rf $PATH_CLONED_REPO
