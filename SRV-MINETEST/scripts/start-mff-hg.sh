@@ -9,7 +9,7 @@ while true
 	do
 
 	echo "----------------------" >>$MOREDEBUG
-	echo "Server restarted at "'date' >>$MOREDEBUG
+	echo "Server restarted at "'`date`' >>$MOREDEBUG
 	echo "----------------------" >>$MOREDEBUG
 
 	echo "0" >/tmp/players_c.txt
