@@ -19,7 +19,7 @@ while true
 		--config /home/quentinbd/mff-creative/minetest.conf \
 		--gameid minetestforfun_creative \
 		--port 30088 \
-#		--logfile $DEBUG
+#		--logfile $DEBUG 
 
 	sleep 25
 done &>> $MOREDEBUG
