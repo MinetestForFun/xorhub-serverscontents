@@ -44,7 +44,7 @@ echo ">>> Démarrage de tous les serveurs - En cours... <<<"
     sleep 0.5
     screen -dmS "mff-classic-mtwebmapper" /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff/worlds/minetestforfun/colors.txt -web-host="" -web-port=8808 -map=/home/quentinbd/mff/worlds/minetestforfun/map.db -web=/var/www/mtsatellite -redis-host=localhost -redis-port=6379 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff/worlds/minetestforfun/mt_players_fifo ulimit -n 4096
     sleep 0.5
-    screen -dmS "mff-classic" /home/quentinbd/script/start-mff.sh
+    screen -dmS "mff-classic" /home/quentinbd/scripts/start-mff.sh
     sleep 0.5
 ### Hunger Games ###
     echo "Démarrage du serveur MinetestForFun Hunger Games en cours..."
@@ -54,7 +54,7 @@ echo ">>> Démarrage de tous les serveurs - En cours... <<<"
     sleep 0.5
     screen -dmS "mff-hg-mtwebmapper" /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/colors.txt -web-host="" -web-port=8809 -map=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db -web=/var/www/mtsatellite-hg -redis-host=localhost -redis-port=6380 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/mt_players_fifo ulimit -n 4096
     sleep 0.5
-    screen -dmS "mff-hg" /home/quentinbd/script/start-mff-hg.sh
+    screen -dmS "mff-hg" /home/quentinbd/scripts/start-mff-hg.sh
     sleep 0.5
 ### SkyBlock ###
     screen -dmS "mff-skyblock-automappercolors" /home/quentinbd/mff-skyblock/games/minetestforfun_skyblock/mods/automappercolors/process.py /home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock /home/quentinbd/mff-skyblock/
@@ -63,7 +63,7 @@ echo ">>> Démarrage de tous les serveurs - En cours... <<<"
     sleep 0.5
     screen -dmS mff-skyblock-mtwebmapper /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/colors.txt -web-host="" -web-port=8811 -map=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/map.db -web=/var/www/mtsatellite-skyblock -redis-host=localhost -redis-port=6382 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/mt_players_fifo ulimit -n 4096
     sleep 0.5
-    screen -dmS "mff-skyblock" /home/quentinbd/script/start-mff-skyblock.sh
+    screen -dmS "mff-skyblock" /home/quentinbd/scripts/start-mff-skyblock.sh
     sleep 0.5
 ### Creative ###
     screen -dmS "mff-creative-automappercolors" /home/quentinbd/mff-creative/games/minetestforfun_creative/mods/automappercolors/process.py /home/quentinbd/mff-creative/worlds/minetestforfun-creative /home/quentinbd/mff-creative/
@@ -72,7 +72,7 @@ echo ">>> Démarrage de tous les serveurs - En cours... <<<"
     sleep 0.5
     screen -dmS mff-creative-mtwebmapper /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/colors.txt -web-host="" -web-port=8810 -map=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/map.db -web=/var/www/mtsatellite-creative -redis-host=localhost -redis-port=6381 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/mt_players_fifo ulimit -n 4096
     sleep 0.5
-    screen -dmS "mff-creative" /home/quentinbd/script/start-mff-creative.sh
+    screen -dmS "mff-creative" /home/quentinbd/scripts/start-mff-creative.sh
     sleep 0.5
 
 echo ">>> Démarrage de tous les serveurs - OK <<<"
