@@ -62,6 +62,6 @@ cp $PATH_CLONED_REPO/SRV-FPS/warsow/basewsw/* /home/quentinbd/warsow/basewsw/
 # Suppression du dossier cloné
 rm -Rf $PATH_CLONED_REPO
 echo ''
-echo -e '\e[46m                                                                               \e[49m'
-echo -e "\e[36mBravo ! Le dossier 'scripts', les serveurs 'Teeworlds' et 'Warsow' sont à jour.\e[39m"
-echo -e '\e[46m                                                                               \e[49m'
+echo -e '\e[46m                                                                           \e[49m'
+echo -e "\e[36mBravo ! Les 'scripts', et les serveurs 'Teeworlds' et 'Warsow' sont à jour.\e[39m"
+echo -e '\e[46m                                                                            \e[49m'

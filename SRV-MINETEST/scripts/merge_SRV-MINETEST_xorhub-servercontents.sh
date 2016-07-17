@@ -48,6 +48,6 @@ cp -R $PATH_CLONED_REPO/SRV-MINETEST/var/www/* /var/www/*
 # Suppression du dossier cloné
 rm -Rf $PATH_CLONED_REPO
 echo ''
-echo -e '\e[46m                                                                    \e[49m'
-echo -e "\e[36mBravo ! Le dossier 'scripts' et les serveurs 'Minetest' sont à jour.\e[39m"
-echo -e '\e[46m                                                                    \e[49m'
+echo -e '\e[46m                                                                      \e[49m'
+echo -e "\e[36mBravo ! Les 'scripts', les 'schematics Minetest' et les maps 'MTsatellite' sont à jour.\e[39m"
+echo -e '\e[46m                                                                      \e[49m'
