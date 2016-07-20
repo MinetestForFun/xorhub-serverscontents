@@ -36,7 +36,7 @@ reboot_mffhungergames() {
     sleep 0.5
     screen -dmS "mff-hg-mtredisalize" /home/quentinbd/gopath/bin/mtredisalize -host=localhost -port=6380 -interleaved=true -change-url=http://localhost:8809/update -change-duration=15s /home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db
     sleep 0.5
-    screen -dmS "mff-hg-mtwebmapper" /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/colors.txt -web-host="" -web-port=8809 -map=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db -web=/var/www/mtsatellite-hg -redis-host=localhost -redis-port=6380 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/mt_players_fifo ulimit -n 4096
+    #screen -dmS "mff-hg-mtwebmapper" /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/colors.txt -web-host="" -web-port=8809 -map=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db -web=/var/www/mtsatellite-hg -redis-host=localhost -redis-port=6380 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/mt_players_fifo ulimit -n 4096
     sleep 0.5
     screen -dmS "mff-hg" /home/quentinbd/scripts/start-mff-hg.sh
     sleep 0.5
