@@ -67,7 +67,7 @@
 # Webmapper pour "mff-classic" - tous les jours à 6h49
 49 6 * * * screen -dmS "mff-classic-mtwebmapper" nice -n 10 /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff/worlds/minetestforfun/colors.txt -web-host="" -web-port=8808 -map=/home/quentinbd/mff/worlds/minetestforfun/map.db -web=/var/www/mtsatellite -redis-host=localhost -redis-port=6379 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff/worlds/minetestforfun/mt_players_fifo ulimit -n 4096
 # Lancement de "mff-classic" tous les jours à 6h50
-50 6 * * * screen -dmS "mff-classic"nice -n -10 /home/quentinbd/scripts/start-mff.sh
+50 6 * * * screen -dmS "mff-classic" /home/quentinbd/scripts/start-mff.sh
 #35 6 * * * /home/quentinbd/scripts/mff-cronexec.sh cl start 30 0 400 0
 
 ### MFF HG ###
@@ -80,7 +80,7 @@
 # Webmapper pour "mff" - tous les jours à 6h49
 # Désactivé pour l'instant car manque de CPU --> 49 6 * * * screen -dmS "mff-hg-mtwebmapper" nice -n 10 /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/colors.txt -web-host="" -web-port=8809 -map=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/map.db -web=/var/www/mtsatellite-hg -redis-host=localhost -redis-port=6380 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-hg/worlds/minetestforfun-hg/mt_players_fifo ulimit -n 4096
 # Lancement de "mff-hg" tous les jours à 6h50
-50 6 * * * screen -dmS "mff-hg" nice -n -10 /home/quentinbd/scripts/start-mff-hg.sh
+50 6 * * * screen -dmS "mff-hg" /home/quentinbd/scripts/start-mff-hg.sh
 # 3 paramètre initialement à 180, mais c'est le hg donc peu de changement de map
 #35 6 * * * /home/quentinbd/scripts/mff-cronexec.sh hg start 30 0 0 0
 
@@ -95,7 +95,7 @@
 # Webmapper pour "mff-skyblock" - tous les jours à 6h49
 49 6 * * * screen -dmS "mff-skyblock-mtwebmapper" nice -n 10 /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/colors.txt -web-host="" -web-port=8811 -map=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/map.db -web=/var/www/mtsatellite-skyblock -redis-host=localhost -redis-port=6382 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/mt_players_fifo ulimit -n 4096
 # Lancement de "mff-skyblock" tous les jours à 6h50
-50 6 * * * screen -dmS "mff-skyblock" nice -n -10 /home/quentinbd/scripts/start-mff-skyblock.sh
+50 6 * * * screen -dmS "mff-skyblock" /home/quentinbd/scripts/start-mff-skyblock.sh
 #35 6 * * * /home/quentinbd/scripts/mff-cronexec.sh sb start 30 0 400 0
 
 ### MFF CREATIVE ###
@@ -109,5 +109,5 @@
 # Webmapper pour "mff-creative" - tous les jours à 6h49
 49 6 * * * screen -dmS "mff-creative-mtwebmapper" nice -n 10 /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/colors.txt -web-host="" -web-port=8810 -map=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/map.db -web=/var/www/mtsatellite-creative -redis-host=localhost -redis-port=6381 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-creative/worlds/minetestforfun-creative/mt_players_fifo ulimit -n 4096
 # Lancement de "mff-creative" tous les jours à 6h50
-50 6 * * * screen -dmS "mff-creative" nice -n -10 /home/quentinbd/scripts/start-mff-creative.sh
+50 6 * * * screen -dmS "mff-creative" /home/quentinbd/scripts/start-mff-creative.sh
 #35 6 * * * /home/quentinbd/scripts/mff-cronexec.sh cr start 30 0 400 0
