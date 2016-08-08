@@ -1,0 +1,22 @@
+### Redémarrage du serveur à 6h32 (3 minutes pour reboot) ###
+32 6 * * * /sbin/shutdown -r now
+
+############
+# SSH MOTD #
+############
+# Write the SSH MOTD in /etc/motd (every 10 minutes)
+*/10 * * * * sh /home/quentinbd/scripts/motd_ssh.sh
+
+#######
+# CPU #
+#######
+# Renice des serveurs Minetest pour priorité high (-10)
+*/30 * * * * pgrep "minetestserver" |  sed 's/^/renice -n -10 /' | sed 's/$/ ;/' | sh
+# (Sécurité car déjà lancé en nice) Renice des mtwebmapper pour priorité low (10)
+*/30 * * * * pgrep "mtwebmapper" | sed 's/^/renice -n 10 /' | sed 's/$/ ;/' | sh
+
+#######
+# RAM #
+#######
+# Erased the cached memory
+* */4 * * * sync; sysctl -w vm.drop_caches=3
