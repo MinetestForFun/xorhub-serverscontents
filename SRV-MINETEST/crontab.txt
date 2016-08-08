@@ -1,10 +1,3 @@
-############
-### NEWS ###
-############
-# Synchronisation des news avec quentinbd@192.168.1.20 - toutes les minutes (en différentiel)
-#*/1 * * * * /home/quentinbd/scripts/news-mff-rsync.sh
-# Remplacé par le fichier RAW depuis Github
-
 ####################
 ### LOGS SERVERS ###
 ####################
@@ -13,28 +6,24 @@
 ########################
 ### SERVERS SHUTDOWN ###
 ########################
-
 ### MFF CLASSIC ###
 # Kill des screens contenant "mff-classic" tous les jours à 6h31
 31 6 * * * screen -S "mff-classic-mtseeder" -X quit
 31 6 * * * screen -S "mff-classic-mtwebmapper" -X quit
 31 6 * * * screen -S "mff-classic" -X quit
 31 6 * * * screen -S "mff-classic-mtredisalize" -X quit
-
 ### MFF HG ###
 # Kill des screens contenant "mff-hg" tous les jours à 6h31
 31 6 * * * screen -S "mff-hg-mtseeder" -X quit
 31 6 * * * screen -S "mff-hg-mtwebmapper" -X quit
 31 6 * * * screen -S "mff-hg" -X quit
 31 6 * * * screen -S "mff-hg-mtredisalize" -X quit
-
 ### MFF SKYBLOCK ###
 # Kill des screens contenant "mff-skyblock" tous les jours à 6h31
 31 6 * * * screen -S "mff-skyblock-mtseeder" -X quit
 31 6 * * * screen -S "mff-skyblock-mtwebmapper" -X quit
 31 6 * * * screen -S "mff-skyblock" -X quit
 31 6 * * * screen -S "mff-skyblock-mtredisalize" -X quit
-
 ### MFF CREATIVE ###
 # Kill des screens contenant "mff-creative" tous les jours à 6h31
 31 6 * * * screen -S "mff-creative-mtseeder" -X quit
@@ -42,14 +31,11 @@
 31 6 * * * screen -S "mff-creative" -X quit
 31 6 * * * screen -S "mff-creative-mtredisalize" -X quit
 
-#
-# Crontab root => Redémarrage du serveur à 6h32 (temps de reboot = 3min max)
-#
+### Crontab root => Redémarrage du serveur à 6h32 (temps de reboot = 3min max) ###
 
 #####################
 ### SERVERS START ###
 #####################
-
 ### MFF CLASSIC ###
 # automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-classic" - tous les jours à 6h35 du matin
 35 6 * * * screen -dmS "mff-classic-automappercolors" /home/quentinbd/mff/mods/automappercolors/process.py /home/quentinbd/mff/worlds/minetestforfun/ /home/quentinbd/mff/
@@ -61,7 +47,6 @@
 49 6 * * * screen -dmS "mff-classic-mtwebmapper" nice -n 10 /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff/worlds/minetestforfun/colors.txt -web-host="" -web-port=8808 -map=/home/quentinbd/mff/worlds/minetestforfun/map.db -web=/var/www/mtsatellite -redis-host=localhost -redis-port=6379 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff/worlds/minetestforfun/mt_players_fifo ulimit -n 4096
 # Lancement de "mff-classic" tous les jours à 6h50
 50 6 * * * screen -dmS "mff-classic" /home/quentinbd/scripts/start-mff.sh
-
 ### MFF HG ###
 # automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-hg" - tous les jours à 6h35 du matin
 35 6 * * * screen -dmS "mff-hg-automappercolors" /home/quentinbd/mff-hg/games/minetestforfun_hg/mods/automappercolors/process.py /home/quentinbd/mff-hg/worlds/minetestforfun-hg /home/quentinbd/mff-hg/
@@ -74,7 +59,6 @@
 # Lancement de "mff-hg" tous les jours à 6h50
 50 6 * * * screen -dmS "mff-hg" /home/quentinbd/scripts/start-mff-hg.sh
 # 3 paramètre initialement à 180, mais c'est le hg donc peu de changement de map
-
 ### MFF SKYBLOCK ###
 # automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-skyblock" - tous les jours à 6h35 du matin
 35 6 * * * screen -dmS "mff-skyblock-automappercolors" /home/quentinbd/mff-skyblock/games/minetestforfun_skyblock/mods/automappercolors/process.py /home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock /home/quentinbd/mff-skyblock/
@@ -86,7 +70,6 @@
 49 6 * * * screen -dmS "mff-skyblock-mtwebmapper" nice -n 10 /home/quentinbd/gopath/bin/mtwebmapper -colors=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/colors.txt -web-host="" -web-port=8811 -map=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/map.db -web=/var/www/mtsatellite-skyblock -redis-host=localhost -redis-port=6382 -workers=1 -transparent=true -websockets=true -players=/home/quentinbd/mff-skyblock/worlds/minetestforfun-skyblock/mt_players_fifo ulimit -n 4096
 # Lancement de "mff-skyblock" tous les jours à 6h50
 50 6 * * * screen -dmS "mff-skyblock" /home/quentinbd/scripts/start-mff-skyblock.sh
-
 ### MFF CREATIVE ###
 # automappercolors pour la génération du "amc_nodes" qui sert à la génération du colors.txt de "mff-creative" - tous les jours à 6h35 du matin
 35 6 * * * screen -dmS "mff-creative-automappercolors" /home/quentinbd/mff-creative/games/minetestforfun_creative/mods/automappercolors/process.py /home/quentinbd/mff-creative/worlds/minetestforfun-creative /home/quentinbd/mff-creative/
