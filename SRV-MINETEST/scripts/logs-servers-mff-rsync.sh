@@ -22,16 +22,16 @@ sed -i '1s/^/### MFF CLASSIC server - $NB_LINES last log lines ###\n/' /home/que
 sed -i '1s/^/################################################\n/' /home/quentinbd/scripts/notready-moredebug-mff.txt
 
 # On cache les adresses IPs
-sed 's/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9]*/???.???.???.???/g' /home/quentinbd/scripts/notready-moredebug-mff.txt > /home/quentinbd/scripts/moredebug-mff.txt
+sed 's/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9]*/???.???.???.???/g' /home/quentinbd/scripts/notready-moredebug-mff.txt > /home/quentinbd/scripts/last-moredebug-mff.txt
 
-# On envoi "moredebug-mff.txt" puis on le supprime
-rsync -azrv --delete /home/quentinbd/scripts/moredebug-mff.txt quentinbd@192.168.1.20:/var/www/wordpress/wp-content/uploads/logs/
-echo ">>> Transfert réussi de moredebug-mff.txt sur le wordpress <<<"
+# On envoi "last-moredebug-mff.txt" puis on le supprime
+rsync -azrv --delete /home/quentinbd/scripts/last-moredebug-mff.txt quentinbd@192.168.1.20:/var/www/wordpress/wp-content/uploads/logs/
+echo ">>> Transfert réussi de last-moredebug-mff.txt sur le wordpress <<<"
 echo ""
 
 # On supprime le fichier temporaire
 rm /home/quentinbd/scripts/notready-moredebug-mff.txt
-rm /home/quentinbd/scripts/moredebug-mff.txt
+rm /home/quentinbd/scripts/last-moredebug-mff.txt
 
 ##########
 # MFF HG #
@@ -45,16 +45,16 @@ sed -i '1s/^/### MFF HG server - $NB_LINES last log lines ###\n/' /home/quentinb
 sed -i '1s/^/###########################################\n/' /home/quentinbd/scripts/notready-moredebug-mff-hg.txt
 
 # On cache les adresses IPs
-sed 's/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9]*/???.???.???.???/g' /home/quentinbd/scripts/notready-moredebug-mff-hg.txt > /home/quentinbd/scripts/moredebug-mff-hg.txt
+sed 's/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9]*/???.???.???.???/g' /home/quentinbd/scripts/notready-moredebug-mff-hg.txt > /home/quentinbd/scripts/last-moredebug-mff-hg.txt
 
-# On envoi "moredebug-mff-hg.txt" puis on le supprime
-rsync -azrv --delete /home/quentinbd/scripts/moredebug-mff-hg.txt quentinbd@192.168.1.20:/var/www/wordpress/wp-content/uploads/logs/
-echo ">>> Transfert réussi de moredebug-mff-hg.txt sur le wordpress <<<"
+# On envoi "last-moredebug-mff-hg.txt" puis on le supprime
+rsync -azrv --delete /home/quentinbd/scripts/last-moredebug-mff-hg.txt quentinbd@192.168.1.20:/var/www/wordpress/wp-content/uploads/logs/
+echo ">>> Transfert réussi de last-moredebug-mff-hg.txt sur le wordpress <<<"
 echo ""
 
 # On supprime le fichier temporaire
 rm /home/quentinbd/scripts/notready-moredebug-mff-hg.txt
-rm /home/quentinbd/scripts/moredebug-mff-hg.txt
+rm /home/quentinbd/scripts/last-moredebug-mff-hg.txt
 
 ################
 # MFF SKYBLOCK #
@@ -68,16 +68,16 @@ sed -i '1s/^/### MFF SKYBLOCK server - $NB_LINES last log lines ###\n/' /home/qu
 sed -i '1s/^/#################################################\n/' /home/quentinbd/scripts/notready-moredebug-mff-skyblock.txt
 
 # On cache les adresses IPs
-sed 's/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9]*/???.???.???.???/g' /home/quentinbd/scripts/notready-moredebug-mff-skyblock.txt > /home/quentinbd/scripts/moredebug-mff-skyblock.txt
+sed 's/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9]*/???.???.???.???/g' /home/quentinbd/scripts/notready-moredebug-mff-skyblock.txt > /home/quentinbd/scripts/last-moredebug-mff-skyblock.txt
 
-# On envoi "moredebug-mff-skyblock.txt" puis on le supprime
-rsync -azrv --delete /home/quentinbd/scripts/moredebug-mff-skyblock.txt quentinbd@192.168.1.20:/var/www/wordpress/wp-content/uploads/logs/
-echo ">>> Transfert réussi de moredebug-mff-skyblock.txt sur le wordpress <<<"
+# On envoi "last-moredebug-mff-skyblock.txt" puis on le supprime
+rsync -azrv --delete /home/quentinbd/scripts/last-moredebug-mff-skyblock.txt quentinbd@192.168.1.20:/var/www/wordpress/wp-content/uploads/logs/
+echo ">>> Transfert réussi de last-moredebug-mff-skyblock.txt sur le wordpress <<<"
 echo ""
 
 # On supprime le fichier temporaire
 rm /home/quentinbd/scripts/notready-moredebug-mff-skyblock.txt
-rm /home/quentinbd/scripts/moredebug-mff-skyblock.txt
+rm /home/quentinbd/scripts/last-moredebug-mff-skyblock.txt
 
 ################
 # MFF CREATIVE #
@@ -91,13 +91,13 @@ sed -i '1s/^/### MFF CREATIVE server - $NB_LINES last log lines ###\n/' /home/qu
 sed -i '1s/^/#################################################\n/' /home/quentinbd/scripts/notready-moredebug-mff-creative.txt
 
 # On cache les adresses IPs
-sed 's/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9]*/???.???.???.???/g' /home/quentinbd/scripts/notready-moredebug-mff-creative.txt > /home/quentinbd/scripts/moredebug-mff-creative.txt
+sed 's/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9]*/???.???.???.???/g' /home/quentinbd/scripts/notready-moredebug-mff-creative.txt > /home/quentinbd/scripts/last-moredebug-mff-creative.txt
 
-# On envoi "moredebug-mff-creative.txt" puis on le supprime
-rsync -azrv --delete /home/quentinbd/scripts/moredebug-mff-creative.txt quentinbd@192.168.1.20:/var/www/wordpress/wp-content/uploads/logs/
-echo ">>> Transfert réussi de moredebug-mff-creative.txt sur le wordpress <<<"
+# On envoi "last-moredebug-mff-creative.txt" puis on le supprime
+rsync -azrv --delete /home/quentinbd/scripts/last-moredebug-mff-creative.txt quentinbd@192.168.1.20:/var/www/wordpress/wp-content/uploads/logs/
+echo ">>> Transfert réussi de last-moredebug-mff-creative.txt sur le wordpress <<<"
 echo ""
 
 # On supprime le fichier temporaire
 rm /home/quentinbd/scripts/notready-moredebug-mff-creative.txt
-rm /home/quentinbd/scripts/moredebug-mff-creative.txt
+rm /home/quentinbd/scripts/last-moredebug-mff-creative.txt
