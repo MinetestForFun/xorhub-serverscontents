@@ -18,7 +18,7 @@ tail -n $NB_LINES /home/quentinbd/scripts/moredebug-mff.txt > /home/quentinbd/sc
 
 # On ajoute une ligne au début
 sed -i '1s/^/################################################\n/' /home/quentinbd/scripts/notready-moredebug-mff.txt
-sed -i '1s/^/### MFF CLASSIC server - $NB_LINES last log lines ###\n/' /home/quentinbd/scripts/notready-moredebug-mff.txt
+sed -i '1s/^/### MFF CLASSIC server - '$NB_LINES' last log lines ###\n/' /home/quentinbd/scripts/notready-moredebug-mff.txt
 sed -i '1s/^/################################################\n/' /home/quentinbd/scripts/notready-moredebug-mff.txt
 
 # On cache les adresses IPs
@@ -41,7 +41,7 @@ tail -n $NB_LINES /home/quentinbd/scripts/moredebug-mff-hg.txt > /home/quentinbd
 
 # On ajoute une ligne au début
 sed -i '1s/^/###########################################\n/' /home/quentinbd/scripts/notready-moredebug-mff-hg.txt
-sed -i '1s/^/### MFF HG server - $NB_LINES last log lines ###\n/' /home/quentinbd/scripts/notready-moredebug-mff-hg.txt
+sed -i '1s/^/### MFF HG server - '$NB_LINES' last log lines ###\n/' /home/quentinbd/scripts/notready-moredebug-mff-hg.txt
 sed -i '1s/^/###########################################\n/' /home/quentinbd/scripts/notready-moredebug-mff-hg.txt
 
 # On cache les adresses IPs
@@ -64,7 +64,7 @@ tail -n $NB_LINES /home/quentinbd/scripts/moredebug-mff-skyblock.txt > /home/que
 
 # On ajoute une ligne au début
 sed -i '1s/^/#################################################\n/' /home/quentinbd/scripts/notready-moredebug-mff-skyblock.txt
-sed -i '1s/^/### MFF SKYBLOCK server - $NB_LINES last log lines ###\n/' /home/quentinbd/scripts/notready-moredebug-mff-skyblock.txt
+sed -i '1s/^/### MFF SKYBLOCK server - '$NB_LINES' last log lines ###\n/' /home/quentinbd/scripts/notready-moredebug-mff-skyblock.txt
 sed -i '1s/^/#################################################\n/' /home/quentinbd/scripts/notready-moredebug-mff-skyblock.txt
 
 # On cache les adresses IPs
@@ -87,7 +87,7 @@ tail -n $NB_LINES /home/quentinbd/scripts/moredebug-mff-creative.txt > /home/que
 
 # On ajoute une ligne au début
 sed -i '1s/^/#################################################\n/' /home/quentinbd/scripts/notready-moredebug-mff-creative.txt
-sed -i '1s/^/### MFF CREATIVE server - $NB_LINES last log lines ###\n/' /home/quentinbd/scripts/notready-moredebug-mff-creative.txt
+sed -i '1s/^/### MFF CREATIVE server - '$NB_LINES' last log lines ###\n/' /home/quentinbd/scripts/notready-moredebug-mff-creative.txt
 sed -i '1s/^/#################################################\n/' /home/quentinbd/scripts/notready-moredebug-mff-creative.txt
 
 # On cache les adresses IPs
