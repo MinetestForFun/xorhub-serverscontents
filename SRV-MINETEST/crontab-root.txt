@@ -18,5 +18,5 @@
 #######
 # RAM #
 #######
-# Erased the cached memory
-* */4 * * * sync; sysctl -w vm.drop_caches=3
+# Erased the cached memory every hour
+0 * * * * sync; echo 3 > /proc/sys/vm/drop_caches
