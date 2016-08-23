@@ -1,5 +1,5 @@
-### Redémarrage du serveur à 6h32 (3 minutes pour reboot) ###
-32 6 * * * /sbin/shutdown -r now
+### Redémarrage du serveur à 6h31 et 05 secondes (3 minutes pour reboot) ###
+31 6 * * * sleep 5; /sbin/shutdown -r now
 
 ############
 # SSH MOTD #
@@ -19,4 +19,4 @@
 # RAM #
 #######
 # Erased the cached memory every hour
-0 * * * * sync; echo 3 > /proc/sys/vm/drop_caches
+0 */4 * * * sync; echo 1 > /proc/sys/vm/drop_caches
