@@ -37,22 +37,22 @@ mkdir -p $PATH_SERVER/games/minetestforfun_hg/mods/
 cp -R /home/quentinbd/server-minetestforfun-hungry_games/mods/ $PATH_SERVER/games/minetestforfun_hg/
 echo ">>> Nouveaux /mods et /games correctement déplacés. <<<"
 
-# On MAJ le minetest.conf, world.mt, random_messages, top_config.txt, et le forbidden_names
+# On MAJ le minetest.conf, world.mt, random_messages, top_config.txt, et le forbidden_names.txt/forbidden_names_patterns.txt
 mkdir -p $PATH_SERVER/worlds/minetestforfun-hg/
 rm $PATH_SERVER/minetest.conf
 rm $PATH_SERVER/worlds/minetestforfun-hg/world.mt
 rm $PATH_SERVER/worlds/minetestforfun-hg/random_messages
 rm $PATH_SERVER/worlds/minetestforfun-hg/top_config.txt
-rm $PATH_SERVER/worlds/minetestforfun-hg/forbidden_names.txt
+rm $PATH_SERVER/worlds/minetestforfun-hg/forbidden_name*.txt
 # On les remet
 cp /home/quentinbd/server-minetestforfun-hungry_games/minetest.conf $PATH_SERVER/games/minetestforfun_hg/
 cp /home/quentinbd/server-minetestforfun-hungry_games/minetest.conf $PATH_SERVER
 cp /home/quentinbd/server-minetestforfun-hungry_games/game.conf $PATH_SERVER/games/minetestforfun_hg/
 cp /home/quentinbd/server-minetestforfun-hungry_games/worlds/minetestforfun-hg/world.mt $PATH_SERVER/worlds/minetestforfun-hg/
 cp /home/quentinbd/server-minetestforfun-hungry_games/worlds/minetestforfun-hg/random_messages $PATH_SERVER/worlds/minetestforfun-hg/
-cp /home/quentinbd/server-minetestforfun-hungry_games/worlds/minetestforfun-hg/forbidden_names.txt $PATH_SERVER/worlds/minetestforfun-hg/
+cp /home/quentinbd/server-minetestforfun-hungry_games/worlds/minetestforfun-hg/forbidden_name*.txt $PATH_SERVER/worlds/minetestforfun-hg/
 cp /home/quentinbd/server-minetestforfun-hungry_games/worlds/minetestforfun-hg/top_config.txt $PATH_SERVER/worlds/minetestforfun-hg/
-echo ">>> Nouveau minetest.conf, game.conf, world.mt, le random_messages, forbidden_names et top_config.txt correctement déplacé. <<<"
+echo ">>> Nouveau minetest.conf, game.conf, world.mt, le random_messages, forbidden_names.txt/forbidden_names_patterns.txt et top_config.txt correctement déplacés. <<<"
 
 # Suppression du dossier cloné
 rm -Rf /home/quentinbd/server-minetestforfun-hungry_games/

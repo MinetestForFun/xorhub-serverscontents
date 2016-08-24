@@ -38,20 +38,21 @@ mkdir -p $PATH_SERVER/games/minetestforfun_creative/mods/
 cp -R /home/quentinbd/server-minetestforfun-creative/mods/ $PATH_SERVER
 echo ">>> Nouveaux /mods et /games correctement déplacés. <<<"
 
-# On MAJ le minetest.conf, game.conf, world.mt, random_messages, et le forbidden_names
+# On MAJ le minetest.conf, game.conf, world.mt, random_messages, et le forbidden_names.txt/forbidden_names_patterns.txt
 mkdir -p $PATH_SERVER/worlds/minetestforfun-creative/
-cp /home/quentinbd/server-minetestforfun-creative/minetestforfun_game/game.conf $PATH_SERVER/games/minetestforfun_creative/
+rm /home/quentinbd/server-minetestforfun-creative/minetestforfun_game/game.conf $PATH_SERVER/games/minetestforfun_creative/
 rm $PATH_SERVER/minetest.conf
 rm $PATH_SERVER/worlds/minetestforfun-creative/world.mt
 rm $PATH_SERVER/worlds/minetestforfun-creative/random_messages
+rm $PATH_SERVER/worlds/minetestforfun-creative/forbidden_name*.txt
 # On les remet
 cp /home/quentinbd/server-minetestforfun-creative/minetest.conf $PATH_SERVER/games/minetestforfun_creative/
 cp /home/quentinbd/server-minetestforfun-creative/minetest.conf $PATH_SERVER
 cp /home/quentinbd/server-minetestforfun-creative/minetestforfun_game/game.conf $PATH_SERVER/games/minetestforfun_creative/
 cp /home/quentinbd/server-minetestforfun-creative/worlds/minetestforfun-creative/world.mt $PATH_SERVER/worlds/minetestforfun-creative/
 cp /home/quentinbd/server-minetestforfun-creative/worlds/minetestforfun-creative/random_messages $PATH_SERVER/worlds/minetestforfun-creative/
-cp /home/quentinbd/server-minetestforfun-creative/worlds/minetestforfun-creative/forbidden_names.txt $PATH_SERVER/worlds/minetestforfun-creative/
-echo ">>> Nouveau minetest.conf, game.conf, world.mt, random_messages, et le forbidden_names correctement déplacé. <<<"
+cp /home/quentinbd/server-minetestforfun-creative/worlds/minetestforfun-creative/forbidden_name*.txt $PATH_SERVER/worlds/minetestforfun-creative/
+echo ">>> Nouveau minetest.conf, game.conf, world.mt, random_messages, et le forbidden_names.txt/forbidden_names_patterns.txt correctement déplacés. <<<"
 
 # Suppression du dossier cloné
 rm -Rf /home/quentinbd/server-minetestforfun-creative/

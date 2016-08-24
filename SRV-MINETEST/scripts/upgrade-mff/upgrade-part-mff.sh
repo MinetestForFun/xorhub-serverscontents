@@ -35,20 +35,21 @@ cp -R /home/quentinbd/server-minetestforfun/minetestforfun_game/ $PATH_SERVER/ga
 cp -R /home/quentinbd/server-minetestforfun/mods/ $PATH_SERVER
 echo ">>> Nouveaux /mods et /games correctement déplacés. <<<"
 
-# On MAJ le minetest.conf, world.mt, random_messages, forbidden_names, et le news.txt
+# On MAJ le minetest.conf, world.mt, random_messages, news.txt, et le forbidden_names.txt/forbidden_names_patterns.txt
 mkdir -p $PATH_SERVER/worlds/minetestforfun/
 rm $PATH_SERVER/minetest.conf
 rm $PATH_SERVER/worlds/minetestforfun/world.mt
 rm $PATH_SERVER/worlds/minetestforfun/random_messages
 rm $PATH_SERVER/worlds/minetestforfun/news.txt
-rm $PATH_SERVER/worlds/minetestforfun/forbidden_names.txt
+rm $PATH_SERVER/worlds/minetestforfun/forbidden_name*.txt
 # On les remet
+cp /home/quentinbd/server-minetestforfun/minetest.conf $PATH_SERVER/games/minetestforfun/
 cp /home/quentinbd/server-minetestforfun/minetest.conf $PATH_SERVER
 cp /home/quentinbd/server-minetestforfun/worlds/minetestforfun/world.mt $PATH_SERVER/worlds/minetestforfun/
 cp /home/quentinbd/server-minetestforfun/worlds/minetestforfun/random_messages $PATH_SERVER/worlds/minetestforfun/
 cp /home/quentinbd/server-minetestforfun/worlds/minetestforfun/news.txt $PATH_SERVER/worlds/minetestforfun/
-cp /home/quentinbd/server-minetestforfun/worlds/minetestforfun/forbidden_names.txt $PATH_SERVER/worlds/minetestforfun/
-echo ">>> Nouveau minetest.conf, game.conf, world.mt, random_messages, et le forbidden_names correctement déplacé. <<<"
+cp /home/quentinbd/server-minetestforfun/worlds/minetestforfun/forbidden_name*.txt $PATH_SERVER/worlds/minetestforfun/
+echo ">>> Nouveau minetest.conf, game.conf, world.mt, random_messages, et le forbidden_names.txt/forbidden_names_patterns.txt correctement déplacés. <<<"
 
 # TEMPORAIRE - ré-ajout de l'ancien mod irc
 #rm -R $PATH_SERVER/mods/irc/

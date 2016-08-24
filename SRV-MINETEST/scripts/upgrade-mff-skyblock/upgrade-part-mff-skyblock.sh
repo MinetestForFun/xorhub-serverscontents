@@ -37,20 +37,20 @@ mkdir -p $PATH_SERVER/games/minetestforfun_skyblock/mods/
 cp -R /home/quentinbd/server-minetestforfun-skyblock/mods/ $PATH_SERVER/games/minetestforfun_skyblock/
 echo ">>> Nouveaux /mods et /games correctement déplacés. <<<"
 
-# On MAJ le minetest.conf, world.mt, le random_messages et le forbidden_names
+# On MAJ le minetest.conf, world.mt, le random_messages et le forbidden_names.txt/forbidden_names_patterns.txt
 mkdir -p $PATH_SERVER/worlds/minetestforfun-skyblock/
 rm $PATH_SERVER/minetest.conf
 rm $PATH_SERVER/worlds/minetestforfun-skyblock/world.mt
 rm $PATH_SERVER/worlds/minetestforfun-skyblock/random_messages
-rm $PATH_SERVER/worlds/minetestforfun-skyblock/forbidden_names.txt
+rm $PATH_SERVER/worlds/minetestforfun-skyblock/forbidden_name*.txt
 # On les remet
 cp /home/quentinbd/server-minetestforfun-skyblock/minetest.conf $PATH_SERVER/games/minetestforfun_skyblock/
 cp /home/quentinbd/server-minetestforfun-skyblock/minetest.conf $PATH_SERVER
 cp /home/quentinbd/server-minetestforfun-skyblock/game.conf $PATH_SERVER/games/minetestforfun_skyblock/
 cp /home/quentinbd/server-minetestforfun-skyblock/worlds/minetestforfun-skyblock/world.mt $PATH_SERVER/worlds/minetestforfun-skyblock/
 cp /home/quentinbd/server-minetestforfun-skyblock/worlds/minetestforfun-skyblock/random_messages $PATH_SERVER/worlds/minetestforfun-skyblock/
-cp /home/quentinbd/server-minetestforfun-skyblock/worlds/minetestforfun-skyblock/forbidden_names.txt $PATH_SERVER/worlds/minetestforfun-skyblock/
-echo ">>> Nouveau minetest.conf, game.conf, world.mt, le random_messages et le forbidden_names correctement déplacé. <<<"
+cp /home/quentinbd/server-minetestforfun-skyblock/worlds/minetestforfun-skyblock/forbidden_name*.txt $PATH_SERVER/worlds/minetestforfun-skyblock/
+echo ">>> Nouveau minetest.conf, game.conf, world.mt, le random_messages et le forbidden_names.txt/forbidden_names_patterns.txt correctement déplacés. <<<"
 
 # Suppression du dossier cloné
 rm -Rf /home/quentinbd/server-minetestforfun-skyblock/
