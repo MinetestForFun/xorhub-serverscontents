@@ -3,6 +3,12 @@
 ####################
 */1 * * * * /home/quentinbd/scripts/logs-servers-mff-rsync.sh
 
+#############
+# Logs SIZE #
+#############
+# Keep only the 200 last MB of the MFF-servers debug.txt files everyday at 7:00AM
+0 7 * * * screen -dmS "debugtxt_size_limit" /home/quentinbd/scripts/debugtxt_size_limit.sh
+
 ########################
 ### SERVERS SHUTDOWN ###
 ########################
