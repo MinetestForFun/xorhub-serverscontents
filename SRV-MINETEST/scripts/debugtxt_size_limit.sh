@@ -1,13 +1,13 @@
 #!/bin/sh
 
-# PATH des serveurs
+# Servers PATH
 PATH_MFF_CL=$HOME/mff/
 PATH_MFF_CR=$HOME/mff-creative/
 PATH_MFF_HG=$HOME/mff-hg/
 PATH_MFF_SB=$HOME/mff-skyblock/
 
-# tail -c option, donc 'K' 'M' 'G' possible
-KEEP_DATA=200M
+# 'tail -c' option, so can be 'K' 'M' 'G'
+KEEP_DATA=500M
 
 ### MFF-CLASSIC ###
 tail -c $KEEP_DATA $PATH_MFF_CL/debug.txt > $PATH_MFF_CL/debug-temp.txt     # Prend les derniers data et mettre en fichier temp
@@ -31,10 +31,10 @@ rm $PATH_MFF_SB/debug-temp.txt                                              # Su
 
 ##################################################################################################
 
-# Trouver tous les debug.txt
+# Find all debug.txt files
 #find $HOME -mindepth 1 -maxdepth 2 -type f -name "debug.txt"
 
-# Trouver tous les debug.txt + afiche leurs tailes
+# Find all debug.txt files and display their size
 #find $HOME -mindepth 1 -maxdepth 2 -type f -name "debug.txt" | sed 's/^/ls -lh /'| sh
 
 # A faire plus tard, enlever le hard link des serveurs et faire un truc propre
