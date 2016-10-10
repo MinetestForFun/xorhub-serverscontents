@@ -5,22 +5,21 @@ It actually contains crontabs, scripts, server configuration files and maps cont
 
 ## The repository
 
+    - SRV-MINETEST
+        - minetest
+            - per servers schematics (world edit schematics)
+        - var/www/mtsatellite* (configuration files for the realtime web worldmap)
+        - crontab-root.txt
+        - crontab-user.txt
 
-- SRV-MINETEST
-  - minetest
-    - servers schematics (world edit schematics)
-  - var/www/mtsatellite* (configuration files for the realtime web worldmap)
-  - crontab.txt
-
-- SRV-FPS
-  - scripts
-  - teeworlds
-    - maps (custom maps)
-    - server configuration file
-  - warsow
-    - server configuration file
-  - crontab.txt
-
+    - SRV-FPS
+        - scripts
+        - teeworlds
+            - maps (custom maps)
+            - server configuration file
+        - warsow
+            - server configuration file
+        - crontab-user.txt
 
 ## License
 
