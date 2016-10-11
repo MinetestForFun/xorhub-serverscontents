@@ -1,0 +1,8 @@
+### Redémarrage du serveur tous les mercredis à 6h31 et 05 secondes (3 minutes pour reboot) ###
+31 6 * * 3 sleep 5; /sbin/shutdown -r now
+
+############
+# SSH MOTD #
+############
+# Write the SSH MOTD in /etc/motd (every 10 minutes)
+*/10 * * * * sh /home/quentinbd/scripts/motd_ssh.sh
