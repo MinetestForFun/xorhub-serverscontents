@@ -18,26 +18,30 @@ PATH_SCRIPTS=$HOME/scripts/
 ### MFF-CLASSIC ###
 # Take lastest datas and put it in a temp file
 tail -c $KEEP_DATA $PATH_MFF_CL/debug.txt > $PATH_MFF_CL/debug-temp.txt
-# Temp file to debug.txt
-mv $PATH_MFF_CL/debug-temp.txt $PATH_MFF_CL/debug.txt
+# Temp file to debug.txt and erase temp file
+cat $PATH_MFF_CL/debug-temp.txt > $PATH_MFF_CL/debug.txt
+rm $PATH_MFF_CL/debug-temp.txt
 
 ### MFF-CREATIVE ###
 # Take lastest datas and put it in a temp file
 tail -c $KEEP_DATA $PATH_MFF_CR/debug.txt > $PATH_MFF_CR/debug-temp.txt
-# Temp file to debug.txt
-mv $PATH_MFF_CR/debug-temp.txt $PATH_MFF_CR/debug.txt
+# Temp file to debug.txt and erase temp file
+cat $PATH_MFF_CR/debug-temp.txt > $PATH_MFF_CR/debug.txt
+rm $PATH_MFF_CR/debug-temp.txt
 
 ### MFF-HUNGERGAMES ###
 # Take lastest datas and put it in a temp file
 tail -c $KEEP_DATA $PATH_MFF_HG/debug.txt > $PATH_MFF_HG/debug-temp.txt
-# Temp file to debug.txt
-mv $PATH_MFF_HG/debug-temp.txt $PATH_MFF_HG/debug.txt
+# Temp file to debug.txt and erase temp file
+cat $PATH_MFF_HG/debug-temp.txt > $PATH_MFF_HG/debug.txt
+rm $PATH_MFF_HG/debug-temp.txt
 
 ### MFF-SKYBLOCK ###
 # Take lastest datas and put it in a temp file
 tail -c $KEEP_DATA $PATH_MFF_SB/debug.txt > $PATH_MFF_SB/debug-temp.txt
-# Temp file to debug.txt
-mv $PATH_MFF_SB/debug-temp.txt $PATH_MFF_SB/debug.txt
+# Temp file to debug.txt and erase temp file
+cat $PATH_MFF_SB/debug-temp.txt > $PATH_MFF_SB/debug.txt
+rm $PATH_MFF_SB/debug-temp.txt
 
 ##########################
 ### moredebug-mff*.txt ###
@@ -45,26 +49,30 @@ mv $PATH_MFF_SB/debug-temp.txt $PATH_MFF_SB/debug.txt
 ### MFF-CLASSIC ###
 # Take lastest datas and put it in a temp file
 tail -c $KEEP_DATA $PATH_SCRIPTS/moredebug-mff.txt > $PATH_SCRIPTS/moredebug-mff-temp.txt
-# Temp file to debug.txt
-mv $PATH_SCRIPTS/moredebug-mff-temp.txt $PATH_SCRIPTS/moredebug-mff.txt
+# Temp file to debug.txt and erase temp file
+cat $PATH_SCRIPTS/moredebug-mff-temp.txt > $PATH_SCRIPTS/moredebug-mff.txt
+rm $PATH_SCRIPTS/moredebug-mff-temp.txt
 
 ### MFF-CREATIVE ###
 # Take lastest datas and put it in a temp file
 tail -c $KEEP_DATA $PATH_SCRIPTS/moredebug-mff-creative.txt > $PATH_SCRIPTS/moredebug-mff-creative-temp.txt
-# Temp file to debug.txt
-mv $PATH_SCRIPTS/moredebug-mff-creative-temp.txt $PATH_SCRIPTS/moredebug-mff-creative.txt
+# Temp file to debug.txt and erase temp file
+cat $PATH_SCRIPTS/moredebug-mff-creative-temp.txt > $PATH_SCRIPTS/moredebug-mff-creative.txt
+rm $PATH_SCRIPTS/moredebug-mff-creative-temp.txt
 
 ### MFF-HUNGERGAMES ###
 # Take lastest datas and put it in a temp file
 tail -c $KEEP_DATA $PATH_SCRIPTS/moredebug-mff-hg.txt > $PATH_SCRIPTS/moredebug-mff-hg-temp.txt
-# Temp file to debug.txt
-mv $PATH_SCRIPTS/moredebug-mff-hg-temp.txt $PATH_SCRIPTS/moredebug-mff-hg.txt
+# Temp file to debug.txt and erase temp file
+cat $PATH_SCRIPTS/moredebug-mff-hg-temp.txt > $PATH_SCRIPTS/moredebug-mff-hg.txt
+rm $PATH_SCRIPTS/moredebug-mff-hg-temp.txt
 
 ### MFF-SKYBLOCK ###
 # Take lastest datas and put it in a temp file
 tail -c $KEEP_DATA $PATH_SCRIPTS/moredebug-mff-skyblock.txt > $PATH_SCRIPTS/moredebug-mff-skyblock-temp.txt
-# Temp file to debug.txt
-mv $PATH_SCRIPTS/moredebug-mff-skyblock-temp.txt $PATH_SCRIPTS/moredebug-mff-skyblock.txt
+# Temp file to debug.txt and erase temp file
+cat $PATH_SCRIPTS/moredebug-mff-skyblock-temp.txt > $PATH_SCRIPTS/moredebug-mff-skyblock.txt
+rm $PATH_SCRIPTS/moredebug-mff-skyblock-temp.txt
 
 ##################################################################################################
 

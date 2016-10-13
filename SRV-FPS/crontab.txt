@@ -1,0 +1,30 @@
+############## Warsow #####################
+# Kill du screen contenant Warsow_server tous les mercredi à 6h30 du matin
+30 6 * * 3 screen -S "warsow" -X quit
+# Lancement de Warsow_server tous les mercredi à 6h32 du matin
+32 6 * * 3 screen -dmS "warsow" /home/quentinbd/scripts/start-warsow_votable.sh
+# Ajout d'un bot warsow
+* * * * * screen -S "warsow" -X stuff "g_numbots 1^M"
+###########################################
+
+#
+# Pas de reboot automatique nécessaire pour l'instant, pour ce serveur
+#
+
+############## TeeWorlds ##################
+# Kill(6h30) puis reboot(6h31) du serveur TeeWorlds_Vanilla_CTF
+30 6 * * 3 screen -S "TeeWorlds_Vanilla_CTF" -X quit
+31 6 * * 3 screen -dmS "TeeWorlds_Vanilla_CTF" /home/quentinbd/TeeWorlds_Vanilla_CTF/teeworlds_srv_d -f /home/quentinbd/TeeWorlds_Vanilla_CTF/serverconfig.cfg
+# Kill(6h30) puis reboot(6h31) du serveur TeeWorlds_Vanilla_DM
+30 6 * * 3 screen -S "TeeWorlds_Vanilla_DM" -X quit
+31 6 * * 3 screen -dmS "TeeWorlds_Vanilla_DM" /home/quentinbd/TeeWorlds_Vanilla_DM/teeworlds_srv_d -f /home/quentinbd/TeeWorlds_Vanilla_DM/serverconfig.cfg
+# Kill(6h30) puis reboot(6h31) du serveur TeeWorlds_Vanilla_TDM
+30 6 * * 3 screen -S "TeeWorlds_Vanilla_TDM" -X quit
+31 6 * * 3 screen -dmS "TeeWorlds_Vanilla_TDM" /home/quentinbd/TeeWorlds_Vanilla_TDM/teeworlds_srv_d -f /home/quentinbd/TeeWorlds_Vanilla_TDM/serverconfig.cfg
+# Kill(6h30) puis reboot(6h31) du serveur TeeWorlds_infclass
+30 6 * * 3 screen -S "TeeWorlds_infclass" -X quit
+31 6 * * 3 screen -dmS "TeeWorlds_infclass" /home/quentinbd/TeeWorlds_infclass/teeworlds_srv_d -f /home/quentinbd/TeeWorlds_infclass/autoexec.cfg
+# Kill(6h30) puis reboot(6h31) du serveur TeeWorlds_OpenFNG
+30 6 * * 3 screen -S "TeeWorlds_OpenFNG" -X quit
+31 6 * * 3 screen -dmS "TeeWorlds_OpenFNG" /home/quentinbd/TeeWorlds_OpenFNG/openfng_srv -f /home/quentinbd/TeeWorlds_OpenFNG/openfng.cfg
+###########################################
