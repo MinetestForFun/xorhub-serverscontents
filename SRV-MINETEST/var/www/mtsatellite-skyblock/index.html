@@ -96,7 +96,7 @@ var players = L.geoJson.ajax('/players', {
 // No spawn on the SKYLBOCK server
 
 //
-// Constructions des joueurs (Point Of Interrest)
+// players buildings (Point Of Interrest)
 //
 var expentr = L.marker([16539, 15632],{
 icon: L.AwesomeMarkers.icon({
@@ -323,10 +323,20 @@ markerColor: 'orange'
 }),
 }).bindPopup("Base de higuys (by higuys)")
 
+var ikoma_japanese_gardens = L.marker([13211, 11301],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Ikoma Japanese Gardens (by tjnenrtn)")
+
 var group_poi = L.layerGroup([expentr, skypalace, tri_Towers_plaza, citadel, eiffel_tower, appletree_farm, private_library,
 				small_castle, strange_tower, iu_residence_hall, monte_sancho, monk_suite, red_cross, ice_castle,
 				sandstone_castle, tiberium_corp, idic_provincial_hospital, meigs_avionics_inc, maxis_manor_estates,
-				flying_inca, the_castle, drift_tower, emokitty_platform, massive_maze, base_de_higuys]);
+				flying_inca, the_castle, drift_tower, emokitty_platform, massive_maze, base_de_higuys,
+			      	ikoma_japanese_gardens]);
 
 //menu en haut à droite
 var rasterMaps = {
