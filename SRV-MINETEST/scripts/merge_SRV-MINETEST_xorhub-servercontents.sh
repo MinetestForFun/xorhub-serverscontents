@@ -43,7 +43,7 @@ cp $PATH_CLONED_REPO/SRV-MINETEST/minetest/mff-skyblock/worlds/minetestforfun-sk
 ### MAJ MTsatellite ###
 #######################
 # MTsatellite configuration file
-cp -R $PATH_CLONED_REPO/SRV-MINETEST/var/www/* /var/www/*
+cp -R $PATH_CLONED_REPO/SRV-MINETEST/var/www/ /var/
 
 # Suppression du dossier cloné
 rm -Rf $PATH_CLONED_REPO
