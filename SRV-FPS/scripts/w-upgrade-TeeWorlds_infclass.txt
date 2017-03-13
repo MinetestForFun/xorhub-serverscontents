@@ -1,9 +1,11 @@
 # Not done
+
 cd /home/quentinbd/
 git clone https://github.com/necropotame/teeworlds-infclass.git
 cd /home/quentinbd/teeworlds-infclass/
-git checkout server-stable
+git checkout master
 cd ..
 mv /home/quentinbd/teeworlds-infclass/ /home/quentinbd/TeeWorlds_infclass/
 cd /home/quentinbd/TeeWorlds_infclass/
 bam "config=release server"
+/home/quentinbd/scripts/merge_SRV-FPS_xorhub-servercontents.sh
