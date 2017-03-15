@@ -23,7 +23,7 @@
 @reboot screen -dmS "TeeWorlds_Vanilla_TDM" /home/quentinbd/TeeWorlds_Vanilla_TDM/teeworlds_srv_d -f /home/quentinbd/TeeWorlds_Vanilla_TDM/serverconfig.cfg
 # Kill(les mercredis à 6h31) puis relance de TeeWorlds_infclass au reboot du serveur
 31 6 * * 3 screen -S "TeeWorlds_infclass" -X quit
-@reboot screen -dmS "TeeWorlds_infclass" /home/quentinbd/TeeWorlds_infclass/teeworlds_srv_d -f /home/quentinbd/TeeWorlds_infclass/autoexec.cfg
+@reboot screen -dmS "TeeWorlds_infclass" /home/quentinbd/TeeWorlds_infclass/infclass_srv_d -f /home/quentinbd/TeeWorlds_infclass/autoexec.cfg
 # Kill(les mercredis à 6h31) puis relance de TeeWorlds_OpenFNG au reboot du serveur
 31 6 * * 3 screen -S "TeeWorlds_OpenFNG" -X quit
 @reboot  screen -dmS "TeeWorlds_OpenFNG" /home/quentinbd/TeeWorlds_OpenFNG/openfng_srv -f /home/quentinbd/TeeWorlds_OpenFNG/openfng.cfg

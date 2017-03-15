@@ -21,7 +21,7 @@ sleep 0.5
 # Reboot TeeWorlds infclass
 screen -S "TeeWorlds_infclass" -X quit
 sleep 0.5
-screen -dmS "TeeWorlds_infclass" /home/quentinbd/TeeWorlds_infclass/teeworlds_srv_d -f /home/quentinbd/TeeWorlds_infclass/autoexec.cfg
+screen -dmS "TeeWorlds_infclass" /home/quentinbd/TeeWorlds_infclass/infclass_srv_d -f /home/quentinbd/TeeWorlds_infclass/autoexec.cfg
 sleep 0.5
 
 # Reboot TeeWorlds OpenFNG
