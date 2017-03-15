@@ -27,7 +27,7 @@ sleep 0.5
 # Reboot TeeWorlds OpenFNG
 screen -S "TeeWorlds_OpenFNG" -X quit
 sleep 0.5
-screen -dmS "TeeWorlds_OpenFNG" /home/quentinbd/TeeWorlds_OpenFNG/openfng_srv -f /home/quentinbd/TeeWorlds_OpenFNG/openfng.cfg
+screen -dmS "TeeWorlds_OpenFNG" cd; /home/quentinbd/TeeWorlds_OpenFNG/openfng_srv -f /home/quentinbd/TeeWorlds_OpenFNG/openfng.cfg
 sleep 0.5
 
 echo ">>> Reboot(s) done. <<<"
