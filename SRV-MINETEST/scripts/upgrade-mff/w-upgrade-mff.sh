@@ -1,13 +1,15 @@
 #!/bin/bash
 
-# passer sur branche master ou stable github
+# Aller au répertoire du serveur
 cd /home/quentinbd/mff/ || exit "Le répertoire du serveur n'existe pas !"
 
 # Suppression des anciens fichiers
 rm -Rv /home/quentinbd/scripts/upgrade-mff/olds
+rm -Rv /home/quentinbd/scripts/upgrade-mff/olds-part
 rm -Rv /home/quentinbd/scripts/upgrade-mff/mff.tar.gz
 
 # Sauvegarde des fichiers critiques
+mkdir /home/quentinbd/mff/games/minetestforfun_game/
 cp -Rv /home/quentinbd/mff/games/minetestforfun_game/ /home/quentinbd/scripts/upgrade-mff/olds/
 cp -Rv /home/quentinbd/mff/mods/ /home/quentinbd/scripts/upgrade-mff/olds/
 cp -Rv /home/quentinbd/mff/worlds/ /home/quentinbd/scripts/upgrade-mff/olds/
@@ -33,7 +35,7 @@ rm -v /home/quentinbd/stable-0.4
 cd /home/quentinbd/mff/ || exit "Le répertoire du serveur n'existe pas !"
 # Build REDIS + IRC
 cmake . -DBUILD_CLIENT=0 -DBUILD_SERVER=1 -DENABLE_REDIS=1 -DRUN_IN_PLACE=1 -DENABLE_GETTEXT=1 -DENABLE_FREETYPE=1 -DENABLE_LUAJIT=1 -DCMAKE_INSTALL_PREFIX:PATH=/usr -DENABLE_CURL=1
-make -j'$(grep -c processor /proc/cpuinfo)'
+make -j"$(grep -c processor /proc/cpuinfo)"
 
 # Ajout des fichiers critiques au nouveau dossier minetest
 cp -Rv /home/quentinbd/scripts/upgrade-mff/olds/minetestforfun_game/ /home/quentinbd/mff/games/
@@ -41,6 +43,6 @@ cp -Rv /home/quentinbd/scripts/upgrade-mff/olds/mods/ /home/quentinbd/mff/
 cp -Rv /home/quentinbd/scripts/upgrade-mff/olds/worlds/ /home/quentinbd/mff/
 cp /home/quentinbd/scripts/upgrade-mff/olds/minetest.conf /home/quentinbd/mff/
 
-# Donne les droits à quentinbd
+# Donne les droits à quentinbd (= utilisateur minetest uniquement, à renommer un jour)
 chmod -R 755 /home/quentinbd/mff/
 chown -R quentinbd:quentinbd /home/quentinbd/

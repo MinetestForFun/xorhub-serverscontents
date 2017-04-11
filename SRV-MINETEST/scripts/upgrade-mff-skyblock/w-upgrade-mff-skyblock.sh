@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# passer sur branche master ou stable github
+# Aller au répertoire du serveur
 cd /home/quentinbd/mff-skyblock/ || exit "Le répertoire du serveur n'existe pas !"
 
 # Suppression des anciens fichiers
 rm -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/olds
+rm -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/olds-part
 rm -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/mff-skyblock.tar.gz
 
 # Sauvegarde des fichiers critiques
@@ -32,9 +33,9 @@ rm -v /home/quentinbd/stable-0.4
 
 # Compilation
 cd /home/quentinbd/mff-skyblock/ || exit "Le répertoire du serveur n'existe pas !"
-# build SQLITE3
-cmake . -DBUILD_CLIENT=0 -DBUILD_SERVER=1 -DRUN_IN_PLACE=1 -DENABLE_GETTEXT=1 -DENABLE_FREETYPE=1 -DENABLE_LUAJIT=1 -DCMAKE_INSTALL_PREFIX:PATH=/usr
-make -j'$(grep -c processor /proc/cpuinfo)'
+# Build REDIS + IRC
+cmake . -DBUILD_CLIENT=0 -DBUILD_SERVER=1 -DENABLE_REDIS=1 -DRUN_IN_PLACE=1 -DENABLE_GETTEXT=1 -DENABLE_FREETYPE=1 -DENABLE_LUAJIT=1 -DCMAKE_INSTALL_PREFIX:PATH=/usr -DENABLE_CURL=1
+make -j"$(grep -c processor /proc/cpuinfo)"
 
 # Ajout des fichiers critiques au nouveau dossier minetest
 cp -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/olds/minetestforfun_skyblock/ /home/quentinbd/mff-skyblock/games/
@@ -42,6 +43,6 @@ cp -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/olds/mods/ /home/quentinbd/m
 cp -Rv /home/quentinbd/scripts/upgrade-mff-skyblock/olds/worlds/ /home/quentinbd/mff-skyblock/
 cp /home/quentinbd/scripts/upgrade-mff-skyblock/olds/minetest.conf /home/quentinbd/mff-skyblock/
 
-# Donne les droits à quentinbd
+# Donne les droits à quentinbd (= utilisateur minetest uniquement, à renommer un jour)
 chmod -R 755 /home/quentinbd/mff-skyblock/
 chown -R quentinbd:quentinbd /home/quentinbd/mff-skyblock/
