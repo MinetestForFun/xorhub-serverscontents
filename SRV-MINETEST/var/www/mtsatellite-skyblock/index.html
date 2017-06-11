@@ -93,10 +93,9 @@ var players = L.geoJson.ajax('/players', {
 //
 // Spawn (Point Of Interrest)
 //
-// No spawn on the SKYLBOCK server
 
 //
-// players buildings (Point Of Interrest)
+// Players buildings (Point Of Interrest)
 //
 var expentr = L.marker([16539, 15632],{
 icon: L.AwesomeMarkers.icon({
@@ -368,13 +367,41 @@ markerColor: 'orange'
 }),
 }).bindPopup("The Enterprise (by stefan77)")
 
+var waterfalling_island = L.marker([22867, 14466],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Waterfalling island (By Serpe)")
+
+var house_of_champions_and_losers = L.marker([15554, 17185],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("House of Champions and losers (By dman)")
+
+var pro_squad_city = L.marker([9029, 17370],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("PRO SQUAD CITY (By HelloDefender12)")
+
 var group_poi = L.layerGroup([expentr, skypalace, tri_Towers_plaza, citadel, eiffel_tower, appletree_farm, private_library,
 				small_castle, strange_tower, iu_residence_hall, monte_sancho, monk_suite, red_cross, ice_castle,
 				sandstone_castle, tiberium_corp, idic_provincial_hospital, meigs_avionics_inc, maxis_manor_estates,
 				flying_inca, the_castle, drift_tower, emokitty_platform, massive_maze, base_de_higuys,
-                ikoma_japanese_gardens, stefan77_castle, stefan77_hill, stefan77_minetestlogo, stefan77_enterprise]);
+                ikoma_japanese_gardens, stefan77_castle, stefan77_hill, stefan77_minetestlogo, stefan77_enterprise,
+                waterfalling_island, house_of_champions_and_losers, pro_squad_city]);
 
-//menu en haut à droite
+// Top right menu (world title)
 var rasterMaps = {
     "MinetestForFun Skyblock World": world,
 };
