@@ -403,12 +403,21 @@ markerColor: 'orange'
 }),
 }).bindPopup("Sand Castle (By Sylos)")
 
+var medieval_merchant_ship = L.marker([22872, 21839],{
+icon: L.AwesomeMarkers.icon({
+icon: 'building-o',
+iconColor: 'black',
+prefix: 'fa',
+markerColor: 'orange'
+}),
+}).bindPopup("Medieval Merchant Ship (By nino_rata)")
+
 var group_poi = L.layerGroup([expentr, skypalace, tri_Towers_plaza, citadel, eiffel_tower, appletree_farm, private_library,
 				small_castle, strange_tower, iu_residence_hall, monte_sancho, monk_suite, red_cross, ice_castle,
 				sandstone_castle, tiberium_corp, idic_provincial_hospital, meigs_avionics_inc, maxis_manor_estates,
 				flying_inca, the_castle, drift_tower, emokitty_platform, massive_maze, base_de_higuys,
                 ikoma_japanese_gardens, stefan77_castle, stefan77_hill, stefan77_minetestlogo, stefan77_enterprise,
-                waterfalling_island, house_of_champions_and_losers, pro_squad_city, sand_castle_sylvos]);
+                waterfalling_island, house_of_champions_and_losers, pro_squad_city, sand_castle_sylvos, medieval_merchant_ship]);
 
 // Top right menu (world title)
 var rasterMaps = {
